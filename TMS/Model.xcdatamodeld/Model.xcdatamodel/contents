@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Episode" syncable="YES">
+        <attribute name="airDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="episodeNo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="ratingCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seasonNo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="writer" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Show" inverseName="relationship" inverseEntity="Show" syncable="YES"/>
+    </entity>
+    <entity name="Show" syncable="YES">
+        <attribute name="actors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="airTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="banner" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="fanart" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="firstAired" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="network" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poster" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ratingCount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="runtime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="thumb" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="traktID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tvdbID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="watchers" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Episode" inverseName="relationship" inverseEntity="Episode" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Show" positionX="-63" positionY="-18" width="128" height="360"/>
+        <element name="Episode" positionX="-54" positionY="135" width="128" height="210"/>
+    </elements>
+</model>
