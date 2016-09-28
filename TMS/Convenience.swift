@@ -38,7 +38,7 @@ extension Client {
         
     }
     
-    func getShowData(show: Show, completionHandlerForGETShowData: (data: Show?, success: Bool, error: NSError?) -> Void) {
+    func getShowData(show: Show, completionHandlerForGETShowData: (success: Bool, error: NSError?) -> Void) {
         
         let methodParameters = [
             Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
@@ -46,7 +46,7 @@ extension Client {
         
         taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.tvdbID)/\(show.traktID)", parameters: methodParameters, completionHandlerForPOST: { ( result, error) in
             if error != nil {
-                completionHandlerForGETShowData(data: nil, success: false, error: error)
+                completionHandlerForGETShowData(success: false, error: error)
             } else {
                 var result = result as! [String:AnyObject]
                 result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID
@@ -56,12 +56,19 @@ extension Client {
                 
                 performDatabaseOperations({
                     let realm = try! Realm()
-                    try! realm.write() {
-                        realm.add(show, update: true)
+                    
+                    do {
+                        try realm.write() {
+                            realm.add(show, update: true)
+                        }
+                        completionHandlerForGETShowData(success: true, error: nil)
+                    } catch let error {
+                        print("An error ocurred: \(error)")
+                        completionHandlerForGETShowData(success: false , error: NSError(domain: "Error: \(error)", code: -1, userInfo: [:]))
                     }
                 })
                 
-                completionHandlerForGETShowData(data: show, success: true, error: nil)
+                
             }
         })
         

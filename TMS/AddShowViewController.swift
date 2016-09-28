@@ -33,7 +33,7 @@ class AddShowViewController: UIViewController {
     }
 
     @IBAction func addShowButton(sender: AnyObject) {
-        Client.sharedInstance.getShowData(show, completionHandlerForGETShowData: { (result, success, error) in
+        Client.sharedInstance.getShowData(show, completionHandlerForGETShowData: { (success, error) in
             performUIUpdatesOnMain({
                 if success {
                     print("Show added successfully")
