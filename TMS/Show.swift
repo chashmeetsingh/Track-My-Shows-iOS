@@ -43,7 +43,7 @@ class Show: Object {
         if let overview = dictionary[Client.MyAPIResponseKeys.Overview] {
             self.overview = overview as? String
         } else {
-            self.overview = nil
+            self.overview = "Not Available"
         }
         
         if let poster = dictionary[Client.MyAPIResponseKeys.Poster] {
@@ -55,13 +55,13 @@ class Show: Object {
         if let title = dictionary[Client.MyAPIResponseKeys.Title] {
             self.title = title as? String
         } else {
-            self.title = nil
+            self.title = "Not Available"
         }
         
         if let status = dictionary[Client.MyAPIResponseKeys.Status] {
             self.status = status as? String
         } else {
-            self.status = nil
+            self.status = "Not Available"
         }
         
         if let thumb = dictionary[Client.MyAPIResponseKeys.Thumb] {
@@ -127,7 +127,7 @@ class Show: Object {
         if let genre = dictionary[Client.MyAPIResponseKeys.Genre] {
             self.genre = genre as? String
         } else {
-            self.genre = nil
+            self.genre = "Not Available"
         }
         
         if let showID = dictionary[Client.MyAPIResponseKeys.showID] {
@@ -139,7 +139,7 @@ class Show: Object {
         if let network = dictionary[Client.MyAPIResponseKeys.Network] {
             self.network = network as? String
         } else {
-            self.network = nil
+            self.network = "Not Available"
         }
         
         if let rating = dictionary[Client.MyAPIResponseKeys.Rating] {
@@ -163,7 +163,7 @@ class Show: Object {
         if let timezone = dictionary[Client.MyAPIResponseKeys.Timezone] {
             self.timezone = timezone as? String
         } else {
-            self.timezone = nil
+            self.timezone = "America/New_York"
         }
         
     }

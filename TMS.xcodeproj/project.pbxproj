@@ -20,11 +20,10 @@
 		6D3181301D9940490088A7B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31812E1D9940490088A7B6 /* Main.storyboard */; };
 		6D3181321D9940490088A7B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181311D9940490088A7B6 /* Assets.xcassets */; };
 		6D3181351D9940490088A7B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */; };
-		6D5018C11D9D17300031EB9A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
-		6D5018C21D9D17300031EB9A /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BF1D9D16780031EB9A /* Material.framework */; };
-		6D5018C31D9D17300031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
-		6D5018C41D9D17300031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
-		6D5018C51D9D17300031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
+		6D4579191D9D6E4500164AED /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
+		6D45791A1D9D6E4500164AED /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
+		6D45791B1D9D6E4500164AED /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
+		6D45791C1D9D6E4500164AED /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
 		6D5018C71D9D25C70031EB9A /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */; };
 		6D5018C91D9D26000031EB9A /* AiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C81D9D26000031EB9A /* AiredViewController.swift */; };
 		6D5018CD1D9D291E0031EB9A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CC1D9D291E0031EB9A /* Time.swift */; };
@@ -77,11 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D5018C11D9D17300031EB9A /* Kingfisher.framework in Frameworks */,
-				6D5018C21D9D17300031EB9A /* Material.framework in Frameworks */,
-				6D5018C31D9D17300031EB9A /* Pods_TMS.framework in Frameworks */,
-				6D5018C41D9D17300031EB9A /* Realm.framework in Frameworks */,
-				6D5018C51D9D17300031EB9A /* RealmSwift.framework in Frameworks */,
+				6D4579191D9D6E4500164AED /* Kingfisher.framework in Frameworks */,
+				6D45791A1D9D6E4500164AED /* Pods_TMS.framework in Frameworks */,
+				6D45791B1D9D6E4500164AED /* Realm.framework in Frameworks */,
+				6D45791C1D9D6E4500164AED /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,9 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				6D31812E1D9940490088A7B6 /* Main.storyboard */,
+				6D2692AF1D99843C00FEF63D /* TrendingCell.swift */,
 				6D3181311D9940490088A7B6 /* Assets.xcassets */,
 				6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */,
-				6D2692AF1D99843C00FEF63D /* TrendingCell.swift */,
 				6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */,
 				6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */,
 			);

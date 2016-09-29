@@ -57,9 +57,8 @@ extension AiredViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! EpisodeViewCell
         let item = aired[indexPath.item]
-        
+
         let episodeDate = timeSince(from: item.airDateTime! as NSDate, numericDates: true)
-        
         let seasonDetails = "S\(String(format: "%02d", item.seasonNumber))E\(String(format: "%02d", item.episodeNumber))"
         
         cell.imageView.kf.setImage(with: URL(string: (item.show?.poster)!)!,

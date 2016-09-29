@@ -8,5 +8,4 @@ target 'TMS' do
   # Pods for TMS
   pod 'Kingfisher' 
   pod 'RealmSwift'
-  pod 'Material', :git => 'https://github.com/CosmicMind/Material.git', :branch => 'development'
 end

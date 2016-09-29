@@ -14,7 +14,7 @@ class ShowsViewController: UIViewController {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-    fileprivate var shows: Results<Show>!
+    var shows: Results<Show>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ extension ShowsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ShowTabCell
         let item = shows[(indexPath as NSIndexPath).row]
-        
+
         cell.showTitle.text = item.title
         cell.showTitle.isHidden = false
         

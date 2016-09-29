@@ -63,7 +63,6 @@ extension Client {
                         }
                         completionHandlerForGETShowData(true, nil)
                     } catch let error {
-                        print("An error ocurred: \(error)")
                         completionHandlerForGETShowData(false , NSError(domain: "Error: \(error)", code: -1, userInfo: [:]))
                     }
                 })

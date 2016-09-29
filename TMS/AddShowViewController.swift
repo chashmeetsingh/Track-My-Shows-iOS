@@ -13,7 +13,10 @@ class AddShowViewController: UIViewController {
     
     var show: Show!
     
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,12 @@ class AddShowViewController: UIViewController {
                 
             }
         )
+        
+        yearLabel.text = "\(show.year!)"
+        statusLabel.text = show.status
+        
+        textView.text = show.overview
+        
     }
 
     @IBAction func addShowButton(_ sender: AnyObject) {

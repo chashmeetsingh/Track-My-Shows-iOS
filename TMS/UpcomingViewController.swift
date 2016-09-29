@@ -59,7 +59,7 @@ extension UpcomingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! EpisodeViewCell
         let item = upcoming[indexPath.item]
-        
+
         let episodeDate = timeAhead(to: item.airDateTime! as NSDate, numericDates: true)
         
         let seasonDetails = "S\(String(format: "%02d", item.seasonNumber))E\(String(format: "%02d", item.episodeNumber))"

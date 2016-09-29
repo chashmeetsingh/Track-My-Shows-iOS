@@ -1,6 +1,5 @@
 PODS:
   - Kingfisher (3.1.1)
-  - Material (2.0.0)
   - Realm (2.0.0):
     - Realm/Headers (= 2.0.0)
   - Realm/Headers (2.0.0)
@@ -9,25 +8,13 @@ PODS:
 
 DEPENDENCIES:
   - Kingfisher
-  - Material (from `https://github.com/CosmicMind/Material.git`, branch `development`)
   - RealmSwift
-
-EXTERNAL SOURCES:
-  Material:
-    :branch: development
-    :git: https://github.com/CosmicMind/Material.git
-
-CHECKOUT OPTIONS:
-  Material:
-    :commit: eb94bb7e4c4306ffc8ff23f143936933bb43cf46
-    :git: https://github.com/CosmicMind/Material.git
 
 SPEC CHECKSUMS:
   Kingfisher: 12b755ae697cc9f0fd3e550db8417fa1233e09ab
-  Material: 61dcd49507c32d07c1557267ec360ce35bd0b1c5
   Realm: 6dda421ae4b3e9a09742fc2cf4b876d459cbedcd
   RealmSwift: 7d015f34a2781a50889be9b5a15c36c08597ea0e
 
-PODFILE CHECKSUM: 0b396199e73be79f46897c99caea8fe35bfb816b
+PODFILE CHECKSUM: 6e9d56bccd87ae6f45d6bbde0acca1cedb94f75a
 
 COCOAPODS: 1.0.1
