@@ -20,14 +20,13 @@
 		6D3181301D9940490088A7B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31812E1D9940490088A7B6 /* Main.storyboard */; };
 		6D3181321D9940490088A7B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181311D9940490088A7B6 /* Assets.xcassets */; };
 		6D3181351D9940490088A7B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */; };
-		6D5018BA1D9D12BC0031EB9A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
-		6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
-		6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
-		6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
-		6D5018C01D9D16780031EB9A /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BF1D9D16780031EB9A /* Material.framework */; };
+		6D5018C11D9D17300031EB9A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
+		6D5018C21D9D17300031EB9A /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BF1D9D16780031EB9A /* Material.framework */; };
+		6D5018C31D9D17300031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
+		6D5018C41D9D17300031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
+		6D5018C51D9D17300031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
-		E2EFB70C14946E51DB7F0C21 /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8696B9B3043CAAA22602039 /* Pods_TMS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,12 +69,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D5018C01D9D16780031EB9A /* Material.framework in Frameworks */,
-				6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */,
-				6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */,
-				6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */,
-				6D5018BA1D9D12BC0031EB9A /* Kingfisher.framework in Frameworks */,
-				E2EFB70C14946E51DB7F0C21 /* Pods_TMS.framework in Frameworks */,
+				6D5018C11D9D17300031EB9A /* Kingfisher.framework in Frameworks */,
+				6D5018C21D9D17300031EB9A /* Material.framework in Frameworks */,
+				6D5018C31D9D17300031EB9A /* Pods_TMS.framework in Frameworks */,
+				6D5018C41D9D17300031EB9A /* Realm.framework in Frameworks */,
+				6D5018C51D9D17300031EB9A /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
