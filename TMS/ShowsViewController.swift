@@ -27,13 +27,13 @@ class ShowsViewController: UIViewController {
     }
     
     func reloadData(notification: NSNotification) {
-        print("called")
         getSavedShows()
     }
     
     func getSavedShows() {
         let realm = try! Realm()
         shows = realm.objects(Show.self)
+        collectionView.reloadData()
     }
     
 }
@@ -80,7 +80,7 @@ extension ShowsViewController: UICollectionViewDataSource {
 extension ShowsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 8.0)
+        return CGSize(width: view.frame.width, height: collectionView.frame.height / 8.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

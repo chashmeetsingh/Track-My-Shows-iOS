@@ -25,6 +25,10 @@
 		6D5018C31D9D17300031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
 		6D5018C41D9D17300031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
 		6D5018C51D9D17300031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
+		6D5018C71D9D25C70031EB9A /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */; };
+		6D5018C91D9D26000031EB9A /* AiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C81D9D26000031EB9A /* AiredViewController.swift */; };
+		6D5018CD1D9D291E0031EB9A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CC1D9D291E0031EB9A /* Time.swift */; };
+		6D5018CF1D9D30720031EB9A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +58,10 @@
 		6D3181361D9940490088A7B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TMS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Pods_TMS.framework"; sourceTree = "<group>"; };
 		6D5018BF1D9D16780031EB9A /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Material/Material.framework"; sourceTree = "<group>"; };
+		6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeViewCell.swift; sourceTree = "<group>"; };
+		6D5018C81D9D26000031EB9A /* AiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AiredViewController.swift; sourceTree = "<group>"; };
+		6D5018CC1D9D291E0031EB9A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShowViewController.swift; sourceTree = "<group>"; };
 		6DCDE5091D9C36DB007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE50B1D9C36F4007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 				6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */,
 				6D2692AF1D99843C00FEF63D /* TrendingCell.swift */,
 				6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */,
+				6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -128,6 +137,8 @@
 				6D2692A21D994A0800FEF63D /* TrendingViewController.swift */,
 				6D2692B51D998FB700FEF63D /* ShowsViewController.swift */,
 				6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */,
+				6D5018C81D9D26000031EB9A /* AiredViewController.swift */,
+				6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -163,14 +174,23 @@
 		6D3181291D9940490088A7B6 /* TMS */ = {
 			isa = PBXGroup;
 			children = (
-				6D31812A1D9940490088A7B6 /* AppDelegate.swift */,
-				6D2692B11D9986DB00FEF63D /* GCDBlackBox.swift */,
-				6D3181361D9940490088A7B6 /* Info.plist */,
+				6D5018CB1D9D29090031EB9A /* Utilities */,
 				6D26929F1D9949E000FEF63D /* Assets */,
 				6D2692A11D9949F400FEF63D /* Controllers */,
 				6D2692A01D9949EC00FEF63D /* Model */,
 			);
 			path = TMS;
+			sourceTree = "<group>";
+		};
+		6D5018CB1D9D29090031EB9A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6D31812A1D9940490088A7B6 /* AppDelegate.swift */,
+				6D2692B11D9986DB00FEF63D /* GCDBlackBox.swift */,
+				6D3181361D9940490088A7B6 /* Info.plist */,
+				6D5018CC1D9D291E0031EB9A /* Time.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		9F7C9904F603D85EB44D722F /* Pods */ = {
@@ -308,14 +328,18 @@
 			files = (
 				6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */,
 				6D2692B61D998FB700FEF63D /* ShowsViewController.swift in Sources */,
+				6D5018C91D9D26000031EB9A /* AiredViewController.swift in Sources */,
 				6D2692B21D9986DB00FEF63D /* GCDBlackBox.swift in Sources */,
 				6D2692B01D99843C00FEF63D /* TrendingCell.swift in Sources */,
 				6D31812B1D9940490088A7B6 /* AppDelegate.swift in Sources */,
 				6D2692AC1D994FB300FEF63D /* Convenience.swift in Sources */,
 				6D2E5B7B1D9BDAA600B87D53 /* Episode.swift in Sources */,
+				6D5018CF1D9D30720031EB9A /* UpcomingViewController.swift in Sources */,
+				6D5018C71D9D25C70031EB9A /* EpisodeViewCell.swift in Sources */,
 				6D2692A31D994A0800FEF63D /* TrendingViewController.swift in Sources */,
 				6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */,
 				6D2692AA1D994C9F00FEF63D /* Client.swift in Sources */,
+				6D5018CD1D9D291E0031EB9A /* Time.swift in Sources */,
 				6D2692A61D994A3400FEF63D /* Constants.swift in Sources */,
 				6D2E5B6B1D9BC50100B87D53 /* Show.swift in Sources */,
 			);
