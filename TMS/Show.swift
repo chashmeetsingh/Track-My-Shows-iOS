@@ -10,27 +10,27 @@ import RealmSwift
 
 class Show: Object {
     
-    dynamic var overview: String?
-    dynamic var poster: String?
-    dynamic var title: String?
-    dynamic var status: String?
-    dynamic var thumb: String?
+    dynamic var overview: String? = "Not Available"
+    dynamic var poster: String? = ""
+    dynamic var title: String? = "Not Available"
+    dynamic var status: String? = "Not Available"
+    dynamic var thumb: String? = ""
     dynamic var traktID: Int = -1
     dynamic var tvdbID: Int = -1
     var watchers: Int? = 0
     var year: Int? = 0
-    dynamic var actors: String?
+    dynamic var actors: String? = "Not Available"
     dynamic var airTime: String?
-    dynamic var banner: String?
-    dynamic var fanart: String?
-    dynamic var firstAired: String?
-    dynamic var genre: String?
+    dynamic var banner: String? = ""
+    dynamic var fanart: String? = ""
+    dynamic var firstAired: String? = "Not Available"
+    dynamic var genre: String? = ""
     dynamic var showID: Int = -1
-    dynamic var network: String?
+    dynamic var network: String? = "Not Available"
     var rating: Double? = 0.0
     var ratingCount: Int? = 0
     var runtime: Int? = 0
-    dynamic var timezone: String?
+    dynamic var timezone: String? = "America/New_York"
     var episodes = List<Episode>()
     
     override static func primaryKey() -> String? {
@@ -49,7 +49,7 @@ class Show: Object {
         if let poster = dictionary[Client.MyAPIResponseKeys.Poster] {
             self.poster = poster as? String
         } else {
-            self.poster = nil
+            self.poster = ""
         }
         
         if let title = dictionary[Client.MyAPIResponseKeys.Title] {
@@ -67,7 +67,7 @@ class Show: Object {
         if let thumb = dictionary[Client.MyAPIResponseKeys.Thumb] {
             self.thumb = thumb as? String
         } else {
-            self.thumb = nil
+            self.thumb = ""
         }
         
         if let traktID = dictionary[Client.MyAPIResponseKeys.TraktID] {
@@ -85,7 +85,7 @@ class Show: Object {
         if let watchers = dictionary[Client.MyAPIResponseKeys.watchers] {
             self.watchers = watchers as? Int
         } else {
-            self.watchers = nil
+            self.watchers = 0
         }
         
         if let year = dictionary[Client.MyAPIResponseKeys.Year] {
@@ -97,7 +97,7 @@ class Show: Object {
         if let actors = dictionary[Client.MyAPIResponseKeys.Actors] {
             self.actors = actors as? String
         } else {
-            self.actors = nil
+            self.actors = "Not Available"
         }
         
         if let airTime = dictionary[Client.MyAPIResponseKeys.AirTime] {
@@ -109,19 +109,19 @@ class Show: Object {
         if let banner = dictionary[Client.MyAPIResponseKeys.Banner] {
             self.banner = banner as? String
         } else {
-            self.banner = nil
+            self.banner = ""
         }
         
         if let fanart = dictionary[Client.MyAPIResponseKeys.Fanart] {
             self.fanart = fanart as? String
         } else {
-            self.fanart = nil
+            self.fanart = ""
         }
         
         if let firstAired = dictionary[Client.MyAPIResponseKeys.FirstAired] {
             self.firstAired = firstAired as? String
         } else {
-            self.firstAired = nil
+            self.firstAired = "Not Available"
         }
         
         if let genre = dictionary[Client.MyAPIResponseKeys.Genre] {

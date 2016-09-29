@@ -16,6 +16,7 @@ extension Client {
     }
     
     struct MyAPIResponseKeys {
+        static let Results = "results"
         static let Response = "response"
         static let Overview = "overview"
         static let Poster = "poster"

@@ -16,6 +16,8 @@ class ShowsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var shows: Results<Show>!
     
+    @IBOutlet weak var defaultLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,11 @@ class ShowsViewController: UIViewController {
     func getSavedShows() {
         let realm = try! Realm()
         shows = realm.objects(Show.self)
+        if shows.count == 0 {
+            defaultLabel.isHidden = false
+        } else {
+            defaultLabel.isHidden = true
+        }
         collectionView.reloadData()
     }
     

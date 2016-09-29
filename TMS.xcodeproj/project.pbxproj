@@ -30,6 +30,8 @@
 		6D5018CF1D9D30720031EB9A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
+		6DDAE7B11D9D924B00A692B5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE7B01D9D924B00A692B5 /* SearchViewController.swift */; };
+		6DDAE7B31D9D996C00A692B5 /* SearchShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		6DCDE50D1D9C36FD007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE5111D9C370B007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTabCell.swift; sourceTree = "<group>"; };
+		6DDAE7B01D9D924B00A692B5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchShowCell.swift; sourceTree = "<group>"; };
 		C3E056E73647C7D519853852 /* Pods-TMS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMS.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMS/Pods-TMS.release.xcconfig"; sourceTree = "<group>"; };
 		E8696B9B3043CAAA22602039 /* Pods_TMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -115,6 +119,7 @@
 				6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */,
 				6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */,
 				6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */,
+				6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */,
 				6D5018C81D9D26000031EB9A /* AiredViewController.swift */,
 				6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */,
+				6DDAE7B01D9D924B00A692B5 /* SearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -327,8 +333,10 @@
 				6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */,
 				6D2692B61D998FB700FEF63D /* ShowsViewController.swift in Sources */,
 				6D5018C91D9D26000031EB9A /* AiredViewController.swift in Sources */,
+				6DDAE7B11D9D924B00A692B5 /* SearchViewController.swift in Sources */,
 				6D2692B21D9986DB00FEF63D /* GCDBlackBox.swift in Sources */,
 				6D2692B01D99843C00FEF63D /* TrendingCell.swift in Sources */,
+				6DDAE7B31D9D996C00A692B5 /* SearchShowCell.swift in Sources */,
 				6D31812B1D9940490088A7B6 /* AppDelegate.swift in Sources */,
 				6D2692AC1D994FB300FEF63D /* Convenience.swift in Sources */,
 				6D2E5B7B1D9BDAA600B87D53 /* Episode.swift in Sources */,

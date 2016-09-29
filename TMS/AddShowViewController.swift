@@ -8,36 +8,57 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class AddShowViewController: UIViewController {
     
     var show: Show!
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    var checkShow: Results<Show>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.kf.setImage(with: URL(string: show.poster!)!,
-                              placeholder: nil,
-                              options: nil,
-            progressBlock: { (receivedSize, totalSize) -> () in
-                //print("Download Progress: \(receivedSize)/\(totalSize)")
-            },
-            completionHandler: { (image, error, cacheType, imageURL) -> () in
-                //print("Downloaded and set!")
-                
-            }
-        )
+        configureView()
+        checkIfShowAlreadySaved()
+    }
+    
+    func configureView() {
+        if let poster = show.poster {
+            imageView.kf.setImage(with: URL(string: poster),
+                placeholder: nil,
+                options: nil,
+                progressBlock: { (receivedSize, totalSize) -> () in
+                    //print("Download Progress: \(receivedSize)/\(totalSize)")
+                },
+                completionHandler: { (image, error, cacheType, imageURL) -> () in
+                    //print("Downloaded and set!")
+                    
+                }
+            )
+        } else {
+            imageView.image = UIImage()
+        }
+        
         
         yearLabel.text = "\(show.year!)"
         statusLabel.text = show.status
-        
         textView.text = show.overview
-        
+    }
+    
+    func checkIfShowAlreadySaved() {
+        let realm = try! Realm()
+        checkShow = realm.objects(Show.self).filter("showID = \(show.showID)")
+        if checkShow.isEmpty {
+            addButton.isEnabled = false
+        } else {
+            addButton.isEnabled = true
+        }
     }
 
     @IBAction func addShowButton(_ sender: AnyObject) {

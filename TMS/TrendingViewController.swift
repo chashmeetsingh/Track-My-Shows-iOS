@@ -64,6 +64,7 @@ extension TrendingViewController: UICollectionViewDataSource {
             },
             completionHandler: { (image, error, cacheType, imageURL) -> () in
                 //self.imageIndicator.stopAnimating()
+                cell.activityIndicator.stopAnimating()
             }
         )
         cell.titleLabel.text = item.title

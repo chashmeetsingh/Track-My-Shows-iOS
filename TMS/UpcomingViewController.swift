@@ -13,6 +13,7 @@ import Kingfisher
 class UpcomingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var defaultLabel: UILabel!
 
     var upcoming: Results<Episode>!
     
@@ -38,8 +39,15 @@ class UpcomingViewController: UIViewController {
         let today = NSDate()
         let later = today.addingTimeInterval(60 * 60 * 24 * 30)
         
-        self.upcoming = allEpisodes.filter("airDateTime BETWEEN {%@, %@} AND seasonNumber > 0", today, later)
+        upcoming = allEpisodes.filter("airDateTime BETWEEN {%@, %@} AND seasonNumber > 0", today, later)
             .sorted(byProperty: "airDateTime", ascending: true)
+        
+        if upcoming.count == 0 {
+            defaultLabel.isHidden = false
+        } else {
+            defaultLabel.isHidden = true
+        }
+        
         self.collectionView.reloadData()
     }
     

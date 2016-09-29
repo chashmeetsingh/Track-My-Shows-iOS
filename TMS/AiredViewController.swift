@@ -12,6 +12,7 @@ import RealmSwift
 class AiredViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var defaultLabel: UILabel!
     
     var aired: Results<Episode>!
     
@@ -39,6 +40,13 @@ class AiredViewController: UIViewController {
         
         aired = allEpisodes.filter("airDateTime BETWEEN {%@, %@} AND seasonNumber > 0", earlier, today)
             .sorted(byProperty: "airDateTime", ascending: false)
+        
+        if aired.count == 0 {
+            defaultLabel.isHidden = false
+        } else {
+            defaultLabel.isHidden = true
+        }
+        
         collectionView.reloadData()
     }
 
