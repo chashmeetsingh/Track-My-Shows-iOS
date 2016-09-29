@@ -24,8 +24,10 @@
 		6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
 		6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
 		6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
+		6D5018C01D9D16780031EB9A /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BF1D9D16780031EB9A /* Material.framework */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
+		E2EFB70C14946E51DB7F0C21 /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8696B9B3043CAAA22602039 /* Pods_TMS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,7 @@
 		6D3181341D9940490088A7B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D3181361D9940490088A7B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TMS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Pods_TMS.framework"; sourceTree = "<group>"; };
+		6D5018BF1D9D16780031EB9A /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Material/Material.framework"; sourceTree = "<group>"; };
 		6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShowViewController.swift; sourceTree = "<group>"; };
 		6DCDE5091D9C36DB007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE50B1D9C36F4007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
@@ -67,10 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D5018C01D9D16780031EB9A /* Material.framework in Frameworks */,
 				6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */,
 				6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */,
 				6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */,
 				6D5018BA1D9D12BC0031EB9A /* Kingfisher.framework in Frameworks */,
+				E2EFB70C14946E51DB7F0C21 /* Pods_TMS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,7 @@
 		46DEAEB29F4CD0C380D90F1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D5018BF1D9D16780031EB9A /* Material.framework */,
 				6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */,
 				6DCDE5111D9C370B007FB96C /* Material.framework */,
 				6DCDE50D1D9C36FD007FB96C /* Material.framework */,
