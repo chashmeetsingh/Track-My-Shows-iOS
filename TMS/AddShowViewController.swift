@@ -36,6 +36,7 @@ class AddShowViewController: UIViewController {
             performUIUpdatesOnMain({
                 if success {
                     print("Show added successfully")
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 } else {
                     print(error?.localizedDescription)
                 }

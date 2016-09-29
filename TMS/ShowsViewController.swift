@@ -22,6 +22,13 @@ class ShowsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         getSavedShows()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+    }
+    
+    func reloadData(notification: NSNotification) {
+        print("called")
+        getSavedShows()
     }
     
     func getSavedShows() {
