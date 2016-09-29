@@ -44,22 +44,21 @@ extension TrendingViewController: UICollectionViewDataSource {
         return Client.sharedInstance.shows
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items().count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! TrendingCell
-        let item = items()[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TrendingCell
+        let item = items()[(indexPath as NSIndexPath).row]
         
-        cell.imageView.kf_setImageWithURL(
-            NSURL(string: item.thumb!)!,
-            placeholderImage: nil,
-            optionsInfo: nil,
+        cell.imageView.kf.setImage(with: URL(string: item.thumb!)!,
+                                   placeholder: nil,
+                                   options: nil,
             progressBlock: { (receivedSize, totalSize) -> () in
                 //print("Download Progress: \(receivedSize)/\(totalSize)")
             },
@@ -78,24 +77,24 @@ extension TrendingViewController: UICollectionViewDataSource {
 
 extension TrendingViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2.0, height: collectionView.frame.height / 5.0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddShow" {
             
-            let vc = segue.destinationViewController as! AddShowViewController
-            let index = collectionView.indexPathForCell(sender as! TrendingCell)
-            vc.show = items()[(index?.row)!]
+            let vc = segue.destination as! AddShowViewController
+            let index = collectionView.indexPath(for: sender as! TrendingCell)
+            vc.show = items()[((index as NSIndexPath?)?.row)!]
             
         }
     }

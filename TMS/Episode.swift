@@ -12,7 +12,7 @@ class Episode: Object {
     
     dynamic var episodeID: Int = -1
     dynamic var episodeTitle: String?
-    dynamic var airDateTime: NSDate?
+    dynamic var airDateTime: Date?
     dynamic var overview: String?
     dynamic var banner: String?
     var rating: Double?
@@ -34,25 +34,25 @@ class Episode: Object {
         if let timezoneString = dictionary[Client.MyAPIResponseKeys.Timezone] {
             timezone = timezoneString as! String
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
-            dateFormatter.timeZone = NSTimeZone(name: timezone)
+            dateFormatter.timeZone = TimeZone(identifier: timezone)
             
             if let airDateTime = dictionary[Client.MyAPIResponseKeys.AirDateTime] {
                 if let dateString = airDateTime as? String {
-                    if let airDetails = dateFormatter.dateFromString(dateString){
+                    if let airDetails = dateFormatter.date(from: dateString){
                         self.airDateTime = airDetails
                     } else {
                         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                        if let airDetails = dateFormatter.dateFromString(dateString){
+                        if let airDetails = dateFormatter.date(from: dateString){
                             self.airDateTime = airDetails
                         } else {
                             dateFormatter.dateFormat = "yyyy-MM-dd ha"
-                            if let airDetails = dateFormatter.dateFromString(dateString) {
+                            if let airDetails = dateFormatter.date(from: dateString) {
                                 self.airDateTime = airDetails
                             } else {
                                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                                if let airDetails = dateFormatter.dateFromString(dateString) {
+                                if let airDetails = dateFormatter.date(from: dateString) {
                                     self.airDateTime = airDetails
                                 }
                             }

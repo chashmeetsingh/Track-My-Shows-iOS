@@ -14,7 +14,7 @@ class ShowsViewController: UIViewController {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-    private var shows: Results<Show>!
+    fileprivate var shows: Results<Show>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +33,24 @@ class ShowsViewController: UIViewController {
 
 extension ShowsViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shows.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ShowTabCell
-        let item = shows[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ShowTabCell
+        let item = shows[(indexPath as NSIndexPath).row]
         
         cell.showTitle.text = item.title
-        cell.showTitle.hidden = false
-        //cell.bannerImageView.hidden = true
-        cell.bannerImageView.kf_setImageWithURL(
-            NSURL(string: item.banner!)!,
-            placeholderImage: nil,
-            optionsInfo: nil,
+        cell.showTitle.isHidden = false
+        
+        cell.bannerImageView.kf.setImage(with: URL(string: item.banner!)!,
+                                         placeholder: nil,
+                                         options: nil,
             progressBlock: { (receivedSize, totalSize) -> () in
                 //print("Download Progress: \(receivedSize)/\(totalSize)")
             },
@@ -60,8 +59,8 @@ extension ShowsViewController: UICollectionViewDataSource {
                 if error != nil {
                     print(error?.localizedDescription)
                 } else {
-                    cell.bannerImageView.hidden = false
-                    cell.showTitle.hidden = true
+                    cell.bannerImageView.isHidden = false
+                    cell.showTitle.isHidden = true
                 }
             }
         )
@@ -73,15 +72,15 @@ extension ShowsViewController: UICollectionViewDataSource {
 
 extension ShowsViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 8.0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0
     }
     

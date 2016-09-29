@@ -12,46 +12,46 @@ import RealmSwift
 
 extension Client {
     
-    func getTrendingShows(completionHandlerForGetTrendingShows: (data: [Show]?,success: Bool, error: NSError?) -> Void) {
+    func getTrendingShows(_ completionHandlerForGetTrendingShows: @escaping (_ data: [Show]?,_ success: Bool, _ error: NSError?) -> Void) {
         
         let methodParameters = [
             Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
         ]
         
-        taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/trending", parameters: methodParameters, completionHandlerForPOST: { (result, error) in
+        _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/trending", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { (result, error) in
             
             if error != nil {
                 
-                completionHandlerForGetTrendingShows(data: nil, success: false, error: error)
+                completionHandlerForGetTrendingShows(nil, false, error)
             } else {
-                guard let response = result[Client.MyAPIResponseKeys.Response] else {
-                    completionHandlerForGetTrendingShows(data: nil, success: false, error: NSError(domain: "ParseError", code: 500, userInfo: [NSLocalizedDescriptionKey: "Could not parse trendingShows"]))
+                guard let response = result?[Client.MyAPIResponseKeys.Response] else {
+                    completionHandlerForGetTrendingShows(nil, false, NSError(domain: "ParseError", code: 500, userInfo: [NSLocalizedDescriptionKey: "Could not parse trendingShows"]))
                     return
                 }
                 
                 let shows = Show.showsFromResults(response as! [[String : AnyObject]])
                 self.shows = shows
-                completionHandlerForGetTrendingShows(data: shows, success: true, error: nil)
+                completionHandlerForGetTrendingShows(shows, true, nil)
             }
             
         })
         
     }
     
-    func getShowData(show: Show, completionHandlerForGETShowData: (success: Bool, error: NSError?) -> Void) {
+    func getShowData(_ show: Show, completionHandlerForGETShowData: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         
         let methodParameters = [
             Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
         ]
         
-        taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.tvdbID)/\(show.traktID)", parameters: methodParameters, completionHandlerForPOST: { ( result, error) in
+         _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.tvdbID)/\(show.traktID)", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { ( result, error) in
             if error != nil {
-                completionHandlerForGETShowData(success: false, error: error)
+                completionHandlerForGETShowData(false, error)
             } else {
                 var result = result as! [String:AnyObject]
-                result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID
-                result[Client.MyAPIResponseKeys.TraktID] = show.traktID
-                result[Client.MyAPIResponseKeys.Thumb] = show.thumb
+                result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID as AnyObject?
+                result[Client.MyAPIResponseKeys.TraktID] = show.traktID as AnyObject?
+                result[Client.MyAPIResponseKeys.Thumb] = show.thumb as AnyObject?
                 let show = Show.getShowFromResult(result)
                 
                 performDatabaseOperations({
@@ -61,10 +61,10 @@ extension Client {
                         try realm.write() {
                             realm.add(show, update: true)
                         }
-                        completionHandlerForGETShowData(success: true, error: nil)
+                        completionHandlerForGETShowData(true, nil)
                     } catch let error {
                         print("An error ocurred: \(error)")
-                        completionHandlerForGETShowData(success: false , error: NSError(domain: "Error: \(error)", code: -1, userInfo: [:]))
+                        completionHandlerForGETShowData(false , NSError(domain: "Error: \(error)", code: -1, userInfo: [:]))
                     }
                 })
                 

@@ -168,7 +168,7 @@ class Show: Object {
         
     }
     
-    static func showsFromResults(results: [[String:AnyObject]]) -> [Show] {
+    static func showsFromResults(_ results: [[String:AnyObject]]) -> [Show] {
         
         var shows = [Show]()
         
@@ -180,7 +180,7 @@ class Show: Object {
         
     }
     
-    static func getShowFromResult(result: [String:AnyObject]) -> Show {
+    static func getShowFromResult(_ result: [String:AnyObject]) -> Show {
         
         let show = Show(dictionary: result)
         
@@ -190,7 +190,7 @@ class Show: Object {
         
     }
     
-    static func getEpisodesFromResponse(show: Show, seasons: NSArray) -> List<Episode> {
+    static func getEpisodesFromResponse(_ show: Show, seasons: NSArray) -> List<Episode> {
         
         let episodes = List<Episode>()
         
@@ -201,8 +201,8 @@ class Show: Object {
             
             for episode in result {
                 var data = episode as! [String : AnyObject]
-                data[Client.MyAPIResponseKeys.SeasonNo] = seasonNumber
-                data[Client.MyAPIResponseKeys.Timezone] = show.timezone!
+                data[Client.MyAPIResponseKeys.SeasonNo] = seasonNumber as AnyObject?
+                data[Client.MyAPIResponseKeys.Timezone] = show.timezone! as AnyObject?
                 
                 let episode = Episode(dictionary: data)
                 episode.show = show

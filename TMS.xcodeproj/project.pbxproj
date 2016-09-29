@@ -15,17 +15,17 @@
 		6D2692B21D9986DB00FEF63D /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2692B11D9986DB00FEF63D /* GCDBlackBox.swift */; };
 		6D2692B61D998FB700FEF63D /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2692B51D998FB700FEF63D /* ShowsViewController.swift */; };
 		6D2E5B6B1D9BC50100B87D53 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E5B6A1D9BC50100B87D53 /* Show.swift */; };
-		6D2E5B791D9BCC3100B87D53 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
 		6D2E5B7B1D9BDAA600B87D53 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2E5B7A1D9BDAA600B87D53 /* Episode.swift */; };
 		6D31812B1D9940490088A7B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31812A1D9940490088A7B6 /* AppDelegate.swift */; };
 		6D3181301D9940490088A7B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31812E1D9940490088A7B6 /* Main.storyboard */; };
 		6D3181321D9940490088A7B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181311D9940490088A7B6 /* Assets.xcassets */; };
 		6D3181351D9940490088A7B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */; };
+		6D5018BA1D9D12BC0031EB9A /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
+		6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
+		6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
+		6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
-		6DCDE50F1D9C3703007FB96C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
-		6DCDE5101D9C3707007FB96C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
-		912FB03ADE99716129319119 /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8696B9B3043CAAA22602039 /* Pods_TMS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +51,7 @@
 		6D3181311D9940490088A7B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D3181341D9940490088A7B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D3181361D9940490088A7B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_TMS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Pods_TMS.framework"; sourceTree = "<group>"; };
 		6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShowViewController.swift; sourceTree = "<group>"; };
 		6DCDE5091D9C36DB007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE50B1D9C36F4007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
@@ -66,10 +67,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DCDE5101D9C3707007FB96C /* Realm.framework in Frameworks */,
-				6DCDE50F1D9C3703007FB96C /* Kingfisher.framework in Frameworks */,
-				6D2E5B791D9BCC3100B87D53 /* RealmSwift.framework in Frameworks */,
-				912FB03ADE99716129319119 /* Pods_TMS.framework in Frameworks */,
+				6D5018BE1D9D12C30031EB9A /* Pods_TMS.framework in Frameworks */,
+				6D5018BB1D9D12C30031EB9A /* Realm.framework in Frameworks */,
+				6D5018BC1D9D12C30031EB9A /* RealmSwift.framework in Frameworks */,
+				6D5018BA1D9D12BC0031EB9A /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +80,7 @@
 		46DEAEB29F4CD0C380D90F1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */,
 				6DCDE5111D9C370B007FB96C /* Material.framework */,
 				6DCDE50D1D9C36FD007FB96C /* Material.framework */,
 				6DCDE50B1D9C36F4007FB96C /* Material.framework */,
@@ -206,11 +208,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Chashmeet Singh";
 				TargetAttributes = {
 					6D3181261D9940490088A7B6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -349,8 +353,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -395,8 +401,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -415,6 +423,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -424,8 +433,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50A261F5B80AE277B90ABBDE /* Pods-TMS.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
@@ -437,6 +448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -444,8 +456,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C3E056E73647C7D519853852 /* Pods-TMS.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
@@ -457,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

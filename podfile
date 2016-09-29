@@ -6,6 +6,6 @@ target 'TMS' do
   use_frameworks!
 
   # Pods for TMS
-  pod 'Kingfisher', '~> 2.4'  
+  pod 'Kingfisher' 
   pod 'RealmSwift'
 end

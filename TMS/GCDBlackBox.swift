@@ -8,14 +8,14 @@
 
 import Foundation
 
-func performUIUpdatesOnMain(updates: () -> Void) {
-    dispatch_async(dispatch_get_main_queue()) {
+func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
+    DispatchQueue.main.async {
         updates()
     }
 }
 
-func performDatabaseOperations(updates: () -> Void) {
-    dispatch_async(dispatch_get_main_queue()) {
+func performDatabaseOperations(_ updates: @escaping () -> Void) {
+    DispatchQueue.main.async {
         updates()
     }
 }

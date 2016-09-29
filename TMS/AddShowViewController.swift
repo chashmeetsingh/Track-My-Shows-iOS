@@ -18,10 +18,9 @@ class AddShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.kf_setImageWithURL(
-            NSURL(string: show.poster!)!,
-            placeholderImage: nil,
-            optionsInfo: nil,
+        imageView.kf.setImage(with: URL(string: show.poster!)!,
+                              placeholder: nil,
+                              options: nil,
             progressBlock: { (receivedSize, totalSize) -> () in
                 //print("Download Progress: \(receivedSize)/\(totalSize)")
             },
@@ -32,7 +31,7 @@ class AddShowViewController: UIViewController {
         )
     }
 
-    @IBAction func addShowButton(sender: AnyObject) {
+    @IBAction func addShowButton(_ sender: AnyObject) {
         Client.sharedInstance.getShowData(show, completionHandlerForGETShowData: { (success, error) in
             performUIUpdatesOnMain({
                 if success {
