@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64m-Nt-C9o">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="64m-Nt-C9o">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VTd-dw-3V2">
                                     <size key="itemSize" width="586" height="77"/>
@@ -36,23 +36,33 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-HL-F0A">
                                                     <rect key="frame" x="18" y="8" width="550" height="61"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfM-WK-FZQ">
+                                                    <rect key="frame" x="18" y="8" width="550" height="61"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="dfM-WK-FZQ" firstAttribute="leading" secondItem="K8k-HL-F0A" secondAttribute="leading" id="7eL-hr-yzL"/>
+                                            <constraint firstItem="dfM-WK-FZQ" firstAttribute="top" secondItem="K8k-HL-F0A" secondAttribute="top" id="8eE-WS-UIE"/>
+                                            <constraint firstItem="dfM-WK-FZQ" firstAttribute="trailing" secondItem="K8k-HL-F0A" secondAttribute="trailing" id="8gt-Z3-5bg"/>
                                             <constraint firstAttribute="trailing" secondItem="K8k-HL-F0A" secondAttribute="trailing" constant="18" id="ILv-YL-ZDb"/>
+                                            <constraint firstItem="dfM-WK-FZQ" firstAttribute="bottom" secondItem="K8k-HL-F0A" secondAttribute="bottom" id="PJ1-ZB-qKG"/>
                                             <constraint firstAttribute="bottom" secondItem="K8k-HL-F0A" secondAttribute="bottom" constant="8" id="aae-S6-HAD"/>
                                             <constraint firstItem="K8k-HL-F0A" firstAttribute="top" secondItem="mtg-mw-rBe" secondAttribute="topMargin" id="bjv-Qm-S8s"/>
                                             <constraint firstItem="K8k-HL-F0A" firstAttribute="leading" secondItem="mtg-mw-rBe" secondAttribute="leading" constant="18" id="cfT-M7-RVB"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="bannerImageView" destination="K8k-HL-F0A" id="lVe-zW-ltJ"/>
+                                            <outlet property="showTitle" destination="dfM-WK-FZQ" id="PVk-8K-dGR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="64m-Nt-C9o" secondAttribute="trailing" id="AY1-mA-alK"/>
                             <constraint firstAttribute="bottom" secondItem="64m-Nt-C9o" secondAttribute="bottom" id="F1X-x4-SUF"/>

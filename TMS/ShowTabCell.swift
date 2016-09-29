@@ -11,4 +11,5 @@ import UIKit
 class ShowTabCell: UICollectionViewCell {
 
     @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var showTitle: UILabel!
 }

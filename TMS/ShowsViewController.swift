@@ -45,6 +45,9 @@ extension ShowsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ShowTabCell
         let item = shows[indexPath.row]
         
+        cell.showTitle.text = item.title
+        cell.showTitle.hidden = false
+        //cell.bannerImageView.hidden = true
         cell.bannerImageView.kf_setImageWithURL(
             NSURL(string: item.banner!)!,
             placeholderImage: nil,
@@ -56,6 +59,9 @@ extension ShowsViewController: UICollectionViewDataSource {
                 //self.imageIndicator.stopAnimating()
                 if error != nil {
                     print(error?.localizedDescription)
+                } else {
+                    cell.bannerImageView.hidden = false
+                    cell.showTitle.hidden = true
                 }
             }
         )
