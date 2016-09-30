@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Toaster
 
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noShowLabel: UILabel!
     
     var shows = [Show]()
 
@@ -22,6 +24,7 @@ class SearchViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
+        noShowLabel.isHidden = true
     }
 
 }
@@ -83,15 +86,21 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         activityIndicator.startAnimating()
+        noShowLabel.isHidden = true
         _ = Client.sharedInstance.getShowsByName(searchBar.text!, completionHandlerForGETShowByName: { (data, success, error) in
             performUIUpdatesOnMain({
                 if success {
                     self.shows = data!
                     self.collectionView.reloadData()
                 } else {
-                    print(error?.localizedDescription)
+                    Toast(text: error?.localizedDescription).show()
                 }
                 self.activityIndicator.stopAnimating()
+                if data?.count == 0 {
+                    self.noShowLabel.isHidden = false
+                } else {
+                    self.noShowLabel.isHidden = true
+                }
             })
         })
     }

@@ -12,11 +12,11 @@ import RealmSwift
 
 class ShowsViewController: UIViewController {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
     var shows: Results<Show>!
     
     @IBOutlet weak var defaultLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,12 @@ class ShowsViewController: UIViewController {
         getSavedShows()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "index")
+        UserDefaults.standard.synchronize()
     }
     
     func reloadData(notification: NSNotification) {
@@ -96,6 +102,25 @@ extension ShowsViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0
+    }
+    
+}
+
+extension ShowsViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if (scrollView.contentOffset.y > 0) {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.addButton.isHidden = true
+            })
+        } 
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.addButton.isHidden = false
+        })
     }
     
 }

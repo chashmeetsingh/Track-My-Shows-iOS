@@ -20,15 +20,16 @@
 		6D3181301D9940490088A7B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31812E1D9940490088A7B6 /* Main.storyboard */; };
 		6D3181321D9940490088A7B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181311D9940490088A7B6 /* Assets.xcassets */; };
 		6D3181351D9940490088A7B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */; };
-		6D4579191D9D6E4500164AED /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
-		6D45791A1D9D6E4500164AED /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
-		6D45791B1D9D6E4500164AED /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
-		6D45791C1D9D6E4500164AED /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
 		6D5018C71D9D25C70031EB9A /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */; };
 		6D5018C91D9D26000031EB9A /* AiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018C81D9D26000031EB9A /* AiredViewController.swift */; };
 		6D5018CD1D9D291E0031EB9A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CC1D9D291E0031EB9A /* Time.swift */; };
 		6D5018CF1D9D30720031EB9A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */; };
 		6D58BF1E1D9A317A00D518B5 /* AddShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */; };
+		6D74FF331D9E42C10029A6A9 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2692B31D998C0D00FEF63D /* Kingfisher.framework */; };
+		6D74FF341D9E42C10029A6A9 /* Pods_TMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */; };
+		6D74FF351D9E42C10029A6A9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B761D9BCC2B00B87D53 /* Realm.framework */; };
+		6D74FF361D9E42C10029A6A9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E5B781D9BCC3100B87D53 /* RealmSwift.framework */; };
+		6D74FF3E1D9E437B0029A6A9 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D74FF3D1D9E437B0029A6A9 /* Toaster.framework */; };
 		6DCDE5141D9C3830007FB96C /* ShowTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */; };
 		6DDAE7B11D9D924B00A692B5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE7B01D9D924B00A692B5 /* SearchViewController.swift */; };
 		6DDAE7B31D9D996C00A692B5 /* SearchShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */; };
@@ -64,6 +65,16 @@
 		6D5018CC1D9D291E0031EB9A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		6D5018CE1D9D30720031EB9A /* UpcomingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		6D58BF1D1D9A317A00D518B5 /* AddShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShowViewController.swift; sourceTree = "<group>"; };
+		6D74FF231D9E40DC0029A6A9 /* BFPaperButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BFPaperButton.framework; path = "Pods/../build/Debug-iphoneos/BFPaperButton/BFPaperButton.framework"; sourceTree = "<group>"; };
+		6D74FF241D9E40DC0029A6A9 /* NBMaterialDialogIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NBMaterialDialogIOS.framework; path = "Pods/../build/Debug-iphoneos/NBMaterialDialogIOS/NBMaterialDialogIOS.framework"; sourceTree = "<group>"; };
+		6D74FF251D9E40DC0029A6A9 /* UIColor_BFPaperColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_BFPaperColors.framework; path = "Pods/../build/Debug-iphoneos/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"; sourceTree = "<group>"; };
+		6D74FF2D1D9E40E50029A6A9 /* BFPaperButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BFPaperButton.framework; path = "Pods/../build/Debug-iphoneos/BFPaperButton/BFPaperButton.framework"; sourceTree = "<group>"; };
+		6D74FF2E1D9E40E50029A6A9 /* NBMaterialDialogIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NBMaterialDialogIOS.framework; path = "Pods/../build/Debug-iphoneos/NBMaterialDialogIOS/NBMaterialDialogIOS.framework"; sourceTree = "<group>"; };
+		6D74FF2F1D9E40E50029A6A9 /* UIColor_BFPaperColors.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIColor_BFPaperColors.framework; path = "Pods/../build/Debug-iphoneos/UIColor+BFPaperColors/UIColor_BFPaperColors.framework"; sourceTree = "<group>"; };
+		6D74FF371D9E42C10029A6A9 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = "Pods/../build/Debug-iphoneos/Toaster/Toaster.framework"; sourceTree = "<group>"; };
+		6D74FF391D9E42F50029A6A9 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = "Pods/../build/Debug-iphoneos/Toaster/Toaster.framework"; sourceTree = "<group>"; };
+		6D74FF3B1D9E432B0029A6A9 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = "Pods/../build/Debug-iphoneos/Toaster/Toaster.framework"; sourceTree = "<group>"; };
+		6D74FF3D1D9E437B0029A6A9 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TMS-figzxfcvsqeyklehbftrmuftwnmw/Build/Products/Debug-iphonesimulator/Toaster/Toaster.framework"; sourceTree = "<group>"; };
 		6DCDE5091D9C36DB007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE50B1D9C36F4007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
 		6DCDE50D1D9C36FD007FB96C /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = "Pods/../build/Debug-iphoneos/Material/Material.framework"; sourceTree = "<group>"; };
@@ -80,10 +91,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D4579191D9D6E4500164AED /* Kingfisher.framework in Frameworks */,
-				6D45791A1D9D6E4500164AED /* Pods_TMS.framework in Frameworks */,
-				6D45791B1D9D6E4500164AED /* Realm.framework in Frameworks */,
-				6D45791C1D9D6E4500164AED /* RealmSwift.framework in Frameworks */,
+				6D74FF3E1D9E437B0029A6A9 /* Toaster.framework in Frameworks */,
+				6D74FF331D9E42C10029A6A9 /* Kingfisher.framework in Frameworks */,
+				6D74FF341D9E42C10029A6A9 /* Pods_TMS.framework in Frameworks */,
+				6D74FF351D9E42C10029A6A9 /* Realm.framework in Frameworks */,
+				6D74FF361D9E42C10029A6A9 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +105,16 @@
 		46DEAEB29F4CD0C380D90F1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D74FF3D1D9E437B0029A6A9 /* Toaster.framework */,
+				6D74FF3B1D9E432B0029A6A9 /* Toaster.framework */,
+				6D74FF391D9E42F50029A6A9 /* Toaster.framework */,
+				6D74FF371D9E42C10029A6A9 /* Toaster.framework */,
+				6D74FF2D1D9E40E50029A6A9 /* BFPaperButton.framework */,
+				6D74FF2E1D9E40E50029A6A9 /* NBMaterialDialogIOS.framework */,
+				6D74FF2F1D9E40E50029A6A9 /* UIColor_BFPaperColors.framework */,
+				6D74FF231D9E40DC0029A6A9 /* BFPaperButton.framework */,
+				6D74FF241D9E40DC0029A6A9 /* NBMaterialDialogIOS.framework */,
+				6D74FF251D9E40DC0029A6A9 /* UIColor_BFPaperColors.framework */,
 				6D5018BF1D9D16780031EB9A /* Material.framework */,
 				6D5018BD1D9D12C30031EB9A /* Pods_TMS.framework */,
 				6DCDE5111D9C370B007FB96C /* Material.framework */,
@@ -412,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -454,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -476,9 +498,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Material",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/BFPaperButton",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/NBMaterialDialogIOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/UIColor+BFPaperColors",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Toaster",
 				);
 				INFOPLIST_FILE = TMS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,9 +525,13 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RealmSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Realm",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Material",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/BFPaperButton",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/NBMaterialDialogIOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/UIColor+BFPaperColors",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Toaster",
 				);
 				INFOPLIST_FILE = TMS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chashmeet.TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";

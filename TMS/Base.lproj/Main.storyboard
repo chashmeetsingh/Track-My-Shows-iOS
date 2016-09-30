@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Ml-Fl-bsO">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="mtg-mw-rBe" customClass="ShowTabCell" customModule="TMS" customModuleProvider="target">
-                                        <rect key="frame" x="-106" y="0.0" width="586" height="77"/>
+                                        <rect key="frame" x="-105.5" y="0.0" width="586" height="77"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="586" height="77"/>
@@ -72,7 +73,7 @@
                                 <state key="normal" image="ic_action_add"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="26"/>
+                                        <integer key="value" value="32"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -101,6 +102,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="d5f-bv-Tg3" id="3e4-ua-qCP"/>
                         <outlet property="collectionView" destination="64m-Nt-C9o" id="18q-I8-jBd"/>
                         <outlet property="defaultLabel" destination="BVu-rR-5V0" id="TI5-hI-IrN"/>
                     </connections>
@@ -130,7 +132,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="jn1-Nt-fW9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <cells>
@@ -186,10 +188,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNt-gl-g8D">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Aba-at-dFu"/>
+                                    <constraint firstAttribute="width" constant="100" id="lCr-IS-80q"/>
+                                </constraints>
+                                <state key="normal" image="refresh_icon"/>
+                                <connections>
+                                    <action selector="refreshList:" destination="Coq-Jg-6Ew" eventType="touchUpInside" id="UCm-51-AJh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CNt-gl-g8D" firstAttribute="centerX" secondItem="jn1-Nt-fW9" secondAttribute="centerX" id="M5c-hz-BlC"/>
                             <constraint firstItem="h7P-Za-VOE" firstAttribute="top" secondItem="fqs-Nx-l1n" secondAttribute="top" id="N2r-8T-pNS"/>
+                            <constraint firstItem="CNt-gl-g8D" firstAttribute="centerY" secondItem="jn1-Nt-fW9" secondAttribute="centerY" id="cDR-5U-wdR"/>
                             <constraint firstAttribute="trailing" secondItem="h7P-Za-VOE" secondAttribute="trailing" id="slq-aX-jpY"/>
                             <constraint firstItem="h7P-Za-VOE" firstAttribute="leading" secondItem="fqs-Nx-l1n" secondAttribute="leading" id="tqi-q6-qYL"/>
                             <constraint firstAttribute="bottom" secondItem="h7P-Za-VOE" secondAttribute="bottom" id="w8p-4h-5B9"/>
@@ -199,6 +213,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="jn1-Nt-fW9" id="xds-dD-ZHQ"/>
                         <outlet property="collectionView" destination="h7P-Za-VOE" id="XQr-ZW-2Q5"/>
+                        <outlet property="refresh" destination="CNt-gl-g8D" id="5KR-Ig-4lj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZB-sk-dMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,15 +223,6 @@
         <!--Search View Controller-->
         <scene sceneID="NIT-Sn-ExX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6rF-fW-eAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="inH-OU-bmv">
-                    <connections>
-                        <outlet property="delegate" destination="6S7-Xq-uch" id="KSP-Km-yyh"/>
-                        <outlet property="searchContentsController" destination="6S7-Xq-uch" id="2j4-Zo-m9q"/>
-                        <outlet property="searchResultsDataSource" destination="6S7-Xq-uch" id="cA6-5b-Tei"/>
-                        <outlet property="searchResultsDelegate" destination="6S7-Xq-uch" id="Bj5-D0-ZSx"/>
-                    </connections>
-                </searchDisplayController>
                 <viewController hidesBottomBarWhenPushed="YES" id="6S7-Xq-uch" customClass="SearchViewController" customModule="TMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="drH-Dt-a1R"/>
@@ -271,32 +277,50 @@
                                     <outlet property="prefetchDataSource" destination="6S7-Xq-uch" id="8aW-Ed-Aq2"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aB5-a0-1gi">
-                                <frame key="frameInset" minX="169" minY="283" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <searchBar contentMode="redraw" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="drP-fx-mY1">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aB5-a0-1gi"/>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search Shows" translatesAutoresizingMaskIntoConstraints="NO" id="drP-fx-mY1">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No shows found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sR-p2-4nF">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2sR-p2-4nF" firstAttribute="centerY" secondItem="aB5-a0-1gi" secondAttribute="centerY" id="0qe-ZH-DHq"/>
+                            <constraint firstItem="2sR-p2-4nF" firstAttribute="centerX" secondItem="drP-fx-mY1" secondAttribute="centerX" id="9M3-FO-qRp"/>
                             <constraint firstItem="drP-fx-mY1" firstAttribute="leading" secondItem="zG9-ow-QTa" secondAttribute="leading" id="JeV-FH-A5G"/>
                             <constraint firstItem="drP-fx-mY1" firstAttribute="bottom" secondItem="zG9-ow-QTa" secondAttribute="top" id="NWe-ZS-LKT"/>
                             <constraint firstAttribute="bottom" secondItem="zG9-ow-QTa" secondAttribute="bottom" id="SZB-dB-jOf"/>
                             <constraint firstItem="drP-fx-mY1" firstAttribute="leading" secondItem="0f5-Ub-Nl3" secondAttribute="leading" id="d90-vm-fP7"/>
+                            <constraint firstItem="sQG-Zw-bea" firstAttribute="top" secondItem="2sR-p2-4nF" secondAttribute="bottom" constant="181" id="hTF-Xa-4B9"/>
                             <constraint firstItem="drP-fx-mY1" firstAttribute="trailing" secondItem="zG9-ow-QTa" secondAttribute="trailing" id="iDt-kY-53o"/>
+                            <constraint firstItem="2sR-p2-4nF" firstAttribute="centerX" secondItem="aB5-a0-1gi" secondAttribute="centerX" id="oKZ-Fu-ha6"/>
+                            <constraint firstItem="2sR-p2-4nF" firstAttribute="leading" secondItem="0f5-Ub-Nl3" secondAttribute="leadingMargin" constant="12" id="oY7-AU-6gH"/>
                             <constraint firstItem="drP-fx-mY1" firstAttribute="top" secondItem="drH-Dt-a1R" secondAttribute="bottom" id="rTp-82-OGa"/>
+                            <constraint firstItem="2sR-p2-4nF" firstAttribute="centerY" secondItem="0f5-Ub-Nl3" secondAttribute="centerY" id="sBI-nK-bYL"/>
                             <constraint firstAttribute="trailing" secondItem="drP-fx-mY1" secondAttribute="trailing" id="sYF-gB-rI3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="aB5-a0-1gi" id="4gZ-dp-UnJ"/>
                         <outlet property="collectionView" destination="zG9-ow-QTa" id="8Z9-3D-sa9"/>
+                        <outlet property="noShowLabel" destination="2sR-p2-4nF" id="jad-dE-eNq"/>
                         <outlet property="searchBar" destination="drP-fx-mY1" id="VoW-eQ-bP4"/>
                         <outlet property="searchDisplayController" destination="inH-OU-bmv" id="OwU-pF-K1L"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rF-fW-eAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="inH-OU-bmv">
+                    <connections>
+                        <outlet property="delegate" destination="6S7-Xq-uch" id="KSP-Km-yyh"/>
+                        <outlet property="searchContentsController" destination="6S7-Xq-uch" id="2j4-Zo-m9q"/>
+                        <outlet property="searchResultsDataSource" destination="6S7-Xq-uch" id="cA6-5b-Tei"/>
+                        <outlet property="searchResultsDelegate" destination="6S7-Xq-uch" id="Bj5-D0-ZSx"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3384.8000000000002" y="1563.8680659670167"/>
         </scene>
@@ -449,6 +473,10 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="2b3-BR-B5p">
+                                                    <frame key="frameInset" minX="24" minY="30" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m5-3w-mRE">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -477,6 +505,7 @@
                                             <constraint firstItem="gYM-ay-hBh" firstAttribute="trailing" secondItem="1m5-3w-mRE" secondAttribute="trailing" id="uE0-EU-imw"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="2b3-BR-B5p" id="tl5-v5-hnP"/>
                                             <outlet property="episodeTitle" destination="gYM-ay-hBh" id="yPh-tx-Ruh"/>
                                             <outlet property="imageView" destination="j7w-FX-feQ" id="CuT-Dk-7wd"/>
                                             <outlet property="showTitle" destination="Dc6-JG-aDU" id="9HU-w7-wa7"/>
@@ -517,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hl0-GY-2Wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080.8000000000002" y="207.34632683658174"/>
+            <point key="canvasLocation" x="1999" y="172"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WKV-ka-dSC">
@@ -529,11 +558,6 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="L9K-nm-M6R" kind="relationship" relationship="viewControllers" id="krO-cw-gCt"/>
                         <segue destination="aW9-ia-4kJ" kind="relationship" relationship="viewControllers" id="t6Q-Dg-o3D"/>
@@ -582,6 +606,10 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="UiE-ot-NW6">
+                                                    <frame key="frameInset" minX="23" minY="30" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuH-Vv-SeN">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -610,6 +638,7 @@
                                             <constraint firstItem="FYk-eh-bL2" firstAttribute="leading" secondItem="xuH-Vv-SeN" secondAttribute="leading" id="zVc-i7-Bvh"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator1" destination="UiE-ot-NW6" id="f9L-xB-ujc"/>
                                             <outlet property="episodeTitle" destination="FYk-eh-bL2" id="xMC-aD-Unm"/>
                                             <outlet property="imageView" destination="qfh-6x-chc" id="3W6-zl-PMj"/>
                                             <outlet property="showTitle" destination="0Id-d8-iXo" id="8F6-tT-Sjc"/>
@@ -712,6 +741,7 @@
     </scenes>
     <resources>
         <image name="ic_action_add" width="32" height="32"/>
+        <image name="refresh_icon" width="256" height="256"/>
         <image name="tab_1" width="32" height="32"/>
         <image name="tab_2" width="24" height="24"/>
         <image name="tab_3" width="32" height="32"/>

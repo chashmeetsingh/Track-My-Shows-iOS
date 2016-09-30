@@ -27,6 +27,12 @@ class UpcomingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "index")
+        UserDefaults.standard.synchronize()
+    }
+    
     func reloadData(notification: NSNotification) {
         prepareItems()
     }
@@ -60,7 +66,6 @@ extension UpcomingViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(upcoming.count)
         return upcoming.count
     }
     
@@ -80,6 +85,7 @@ extension UpcomingViewController: UICollectionViewDataSource {
             },
                                    completionHandler: { (image, error, cacheType, imageURL) -> () in
                                     //print("Downloaded and set!")
+                                    cell.activityIndicator1.stopAnimating()
             }
         )
         

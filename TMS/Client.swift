@@ -12,7 +12,6 @@ class Client: NSObject {
     
     var session: URLSession
     static let sharedInstance = Client()
-    var shows = [Show]()
     
     fileprivate override init() {
         session = URLSession.shared

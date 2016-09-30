@@ -8,11 +8,14 @@
 
 import UIKit
 import Kingfisher
+import Toaster
 
 class TrendingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var refresh: UIButton!
+    var shows = [Show]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,7 @@ class TrendingViewController: UIViewController {
         getTrendingShows()
         collectionView.dataSource = self
         collectionView.delegate = self
+        refresh.isHidden = true
     }
     
     func getTrendingShows() {
@@ -27,13 +31,19 @@ class TrendingViewController: UIViewController {
         Client.sharedInstance.getTrendingShows({ (shows, success, error) in
             performUIUpdatesOnMain({
                 if success {
+                    self.shows = shows!
                     self.collectionView.reloadData()
                 } else {
-                    print(error?.localizedDescription)
+                    Toast(text: error?.localizedDescription).show()
+                    self.refresh.isHidden = false
                 }
                 self.activityIndicator.stopAnimating()
             })
         })
+    }
+    @IBAction func refreshList(_ sender: AnyObject) {
+        refresh.isHidden = true
+        getTrendingShows()
     }
 
 }
@@ -41,7 +51,7 @@ class TrendingViewController: UIViewController {
 extension TrendingViewController: UICollectionViewDataSource {
     
     func items() -> [Show] {
-        return Client.sharedInstance.shows
+        return shows
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -19,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initialiseRealm()
         
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        
+        let index: Int? = UserDefaults.standard.integer(forKey: "index")
+        if let index = index {
+            tabBarController.selectedIndex = index
+        } else {
+            tabBarController.selectedIndex = 1
+        }
+        
         return true
     }
 
@@ -44,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    fileprivate func initialiseRealm() {
+    private func initialiseRealm() {
         var config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).

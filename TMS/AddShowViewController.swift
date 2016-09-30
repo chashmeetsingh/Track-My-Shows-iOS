@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import RealmSwift
+import Toaster
 
 class AddShowViewController: UIViewController {
     
@@ -53,22 +54,27 @@ class AddShowViewController: UIViewController {
     
     func checkIfShowAlreadySaved() {
         let realm = try! Realm()
-        checkShow = realm.objects(Show.self).filter("showID = \(show.showID)")
-        if checkShow.isEmpty {
-            addButton.isEnabled = false
-        } else {
+        checkShow = realm.objects(Show.self).filter("tvdbID = \(show.tvdbID)")
+
+        if checkShow.count == 0 {
             addButton.isEnabled = true
+        } else {
+            addButton.isEnabled = false
         }
     }
 
     @IBAction func addShowButton(_ sender: AnyObject) {
+        addButton.isEnabled = false
+        Toast(text: "Show will be added to list shortly").show()
         Client.sharedInstance.getShowData(show, completionHandlerForGETShowData: { (success, error) in
             performUIUpdatesOnMain({
                 if success {
                     print("Show added successfully")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 } else {
+                    self.addButton.isEnabled = true
                     print(error?.localizedDescription)
+                    Toast(text: error?.localizedDescription).show()
                 }
             })
         })

@@ -14,4 +14,6 @@ class EpisodeViewCell: UICollectionViewCell {
     @IBOutlet weak var episodeTitle: UILabel!
     @IBOutlet weak var timeAgo: UILabel!
     @IBOutlet weak var showTitle: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator1: UIActivityIndicatorView!
 }

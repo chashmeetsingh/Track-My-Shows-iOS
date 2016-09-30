@@ -30,7 +30,6 @@ extension Client {
                 }
                 
                 let shows = Show.showsFromResults(response as! [[String : AnyObject]])
-                self.shows = shows
                 completionHandlerForGetTrendingShows(shows, true, nil)
             }
             

@@ -8,4 +8,5 @@ target 'TMS' do
   # Pods for TMS
   pod 'Kingfisher' 
   pod 'RealmSwift'
+  pod 'Toaster'
 end
