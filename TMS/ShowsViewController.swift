@@ -26,12 +26,42 @@ class ShowsViewController: UIViewController {
         getSavedShows()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
+        let holdToDelete = UILongPressGestureRecognizer(target: self, action: #selector(longPressDelete(sender:)))
+        holdToDelete.minimumPressDuration = 1.00
+        self.collectionView.addGestureRecognizer(holdToDelete)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "index")
         UserDefaults.standard.synchronize()
+    }
+    
+    func longPressDelete(sender: UILongPressGestureRecognizer) {
+        
+        let p = sender.location(in: collectionView)
+        
+        let indexPath = self.collectionView.indexPathForItem(at: p)
+        if (indexPath == nil) {
+        } else if (sender.state == UIGestureRecognizerState.began) {
+            
+            let alert = UIAlertController(title: "Confirm", message: "Are you sure to delete?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: { action in
+                performDatabaseOperations {
+                    let realm = try! Realm()
+                    try! realm.write() {
+                        realm.delete(self.shows[indexPath!.row].episodes)
+                        realm.delete(self.shows[indexPath!.row])
+                    }
+                    self.getSavedShows()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.cancel, handler: { action in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } 
     }
     
     func reloadData(notification: NSNotification) {

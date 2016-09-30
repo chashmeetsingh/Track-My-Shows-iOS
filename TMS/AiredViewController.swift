@@ -111,4 +111,13 @@ extension AiredViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailEpisode" {
+            let vc = segue.destination as! EpisodeDetailViewController
+            let index = collectionView.indexPath(for: sender as! EpisodeViewCell)
+            vc.episode = aired[(index?.row)!]
+        } 
+    }
+    
 }
