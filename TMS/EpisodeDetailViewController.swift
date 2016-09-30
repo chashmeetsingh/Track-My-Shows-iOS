@@ -37,6 +37,8 @@ class EpisodeDetailViewController: UIViewController {
         } else {
             watched.isOn = false
         }
+        
+        self.navigationItem.title = episode.episodeTitle
     }
 
     

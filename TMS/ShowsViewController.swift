@@ -55,7 +55,7 @@ class ShowsViewController: UIViewController {
                         realm.delete(self.shows[indexPath!.row].episodes)
                         realm.delete(self.shows[indexPath!.row])
                     }
-                    self.getSavedShows()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 }
             }))
             alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.cancel, handler: { action in

@@ -28,7 +28,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="mtg-mw-rBe" customClass="ShowTabCell" customModule="TMS" customModuleProvider="target">
-                                        <rect key="frame" x="-105.5" y="0.0" width="586" height="77"/>
+                                        <rect key="frame" x="-106" y="0.0" width="586" height="77"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="586" height="77"/>
@@ -457,7 +457,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ddf-np-04r" customClass="EpisodeViewCell" customModule="TMS" customModuleProvider="target">
-                                        <rect key="frame" x="1.5" y="0.0" width="372" height="81"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="372" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="372" height="81"/>
@@ -549,7 +549,7 @@
             </objects>
             <point key="canvasLocation" x="1999" y="172"/>
         </scene>
-        <!--Episode Detail View Controller-->
+        <!--Title-->
         <scene sceneID="TXC-YS-xjf">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="skK-Ul-ufd" customClass="EpisodeDetailViewController" customModule="TMS" customModuleProvider="target" sceneMemberID="viewController">
@@ -626,6 +626,7 @@
                             <constraint firstItem="dov-bb-lwP" firstAttribute="top" secondItem="rOh-k1-9DN" secondAttribute="bottom" id="scA-6y-NJv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="glw-La-YJT"/>
                     <connections>
                         <outlet property="imageView" destination="XJV-cf-NOo" id="Gce-aH-fD3"/>
                         <outlet property="overview" destination="Jiz-Jj-xSP" id="74m-W6-B8C"/>
@@ -678,7 +679,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="SB6-we-MjC" customClass="EpisodeViewCell" customModule="TMS" customModuleProvider="target">
-                                        <rect key="frame" x="1.5" y="0.0" width="372" height="81"/>
+                                        <rect key="frame" x="2" y="0.0" width="372" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="372" height="81"/>
