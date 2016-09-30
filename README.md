@@ -7,7 +7,7 @@ Udacity iOS Nanodegree Final Project
 > Clone, Build, Remove and Add Pods, Run.
 
 ##Using
-This app is iOS port of my app Track My Shows(android) [Track My Shows](https://play.google.com/store/apps/details?id=ss.delta.com.trackmyshows)
+This app is iOS port of my app [Track My Shows](https://play.google.com/store/apps/details?id=ss.delta.com.trackmyshows)(android)
 
 More features to be added as are there
 
