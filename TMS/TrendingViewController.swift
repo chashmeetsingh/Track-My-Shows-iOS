@@ -78,7 +78,7 @@ extension TrendingViewController: UICollectionViewDataSource {
             }
         )
         cell.titleLabel.text = item.title
-        cell.watchLabel.text = " \(item.watchers!) people watching "
+        //cell.watchLabel.text = " \(item.watchers!) people watching "
         cell.watchLabel.sizeToFit()
         
         return cell

@@ -8,162 +8,110 @@
 
 import RealmSwift
 
+class Genres: Object {
+    dynamic var genre: String?
+}
+
 class Show: Object {
     
-    dynamic var overview: String? = "Not Available"
-    dynamic var poster: String? = ""
     dynamic var title: String? = "Not Available"
+    dynamic var year: Int = -1
+    dynamic var id: Int = -1
+    dynamic var overview: String? = "Not Available"
+    dynamic var firstAired: NSDate?
+    dynamic var airDay: String? = "Not Available"
+    dynamic var airTime: String? = "Not Available"
+    dynamic var timezone: String? = "America/New_York"
+    dynamic var runtime: Int = 0
+    dynamic var network: String? = "Not Available"
+    dynamic var trailer: String?
     dynamic var status: String? = "Not Available"
-    dynamic var thumb: String? = ""
-    dynamic var traktID: Int = -1
-    dynamic var tvdbID: Int = -1
-    var watchers: Int? = 0
-    var year: Int? = 0
-    dynamic var actors: String? = "Not Available"
-    dynamic var airTime: String?
+    dynamic var rating: Int = 0
+    var genreList = List<Genres>()
+    dynamic var airedEpisodeCount: Int = 0
+    dynamic var poster: String? = ""
     dynamic var banner: String? = ""
     dynamic var fanart: String? = ""
-    dynamic var firstAired: String? = "Not Available"
-    dynamic var genre: String? = ""
-    dynamic var showID: Int = -1
-    dynamic var network: String? = "Not Available"
-    var rating: Double? = 0.0
-    var ratingCount: Int? = 0
-    var runtime: Int? = 0
-    dynamic var timezone: String? = "America/New_York"
-    var episodes = List<Episode>()
+    dynamic var thumb: String? = ""
+    var seasons = List<Season>()
     
     override static func primaryKey() -> String? {
-        return "showID"
+        return "id"
     }
     
     convenience init(dictionary: [String:AnyObject]) {
         self.init()
         
-        if let overview = dictionary[Client.MyAPIResponseKeys.Overview] {
-            self.overview = overview as? String
-        } else {
-            self.overview = "Not Available"
-        }
-        
-        if let poster = dictionary[Client.MyAPIResponseKeys.Poster] {
-            self.poster = poster as? String
-        } else {
-            self.poster = ""
-        }
-        
-        if let title = dictionary[Client.MyAPIResponseKeys.Title] {
+        if let title = dictionary[Client.TraktParameters.Title] {
             self.title = title as? String
-        } else {
-            self.title = "Not Available"
         }
         
-        if let status = dictionary[Client.MyAPIResponseKeys.Status] {
-            self.status = status as? String
-        } else {
-            self.status = "Not Available"
+        if let year = dictionary[Client.TraktParameters.Year] {
+            self.year = year as! Int
         }
         
-        if let thumb = dictionary[Client.MyAPIResponseKeys.Thumb] {
-            self.thumb = thumb as? String
-        } else {
-            self.thumb = ""
+        if let id = dictionary[Client.TraktParameters.TraktID] {
+            self.id = id as! Int
         }
         
-        if let traktID = dictionary[Client.MyAPIResponseKeys.TraktID] {
-            self.traktID = traktID as! Int
-        } else {
-            self.traktID = -1
+        if let overview = dictionary[Client.TraktParameters.Overview] {
+            self.overview = overview as? String
         }
         
-        if let tvdbID = dictionary[Client.MyAPIResponseKeys.TvdbID] {
-            self.tvdbID = tvdbID as! Int
-        } else {
-            self.tvdbID = -1
+        if let firstAired = dictionary[Client.TraktParameters.FirstAired] {
+            self.firstAired = firstAired as? NSDate
         }
         
-        if let watchers = dictionary[Client.MyAPIResponseKeys.watchers] {
-            self.watchers = watchers as? Int
-        } else {
-            self.watchers = 0
+        if let airDay = dictionary[Client.TraktParameters.Day] {
+            self.airDay = airDay as? String
         }
         
-        if let year = dictionary[Client.MyAPIResponseKeys.Year] {
-            self.year = year as? Int
-        } else {
-            self.year = nil
-        }
-        
-        if let actors = dictionary[Client.MyAPIResponseKeys.Actors] {
-            self.actors = actors as? String
-        } else {
-            self.actors = "Not Available"
-        }
-        
-        if let airTime = dictionary[Client.MyAPIResponseKeys.AirTime] {
+        if let airTime = dictionary[Client.TraktParameters.Time] {
             self.airTime = airTime as? String
-        } else {
-            self.airTime = nil
         }
         
-        if let banner = dictionary[Client.MyAPIResponseKeys.Banner] {
-            self.banner = banner as? String
-        } else {
-            self.banner = ""
-        }
-        
-        if let fanart = dictionary[Client.MyAPIResponseKeys.Fanart] {
-            self.fanart = fanart as? String
-        } else {
-            self.fanart = ""
-        }
-        
-        if let firstAired = dictionary[Client.MyAPIResponseKeys.FirstAired] {
-            self.firstAired = firstAired as? String
-        } else {
-            self.firstAired = "Not Available"
-        }
-        
-        if let genre = dictionary[Client.MyAPIResponseKeys.Genre] {
-            self.genre = genre as? String
-        } else {
-            self.genre = "Not Available"
-        }
-        
-        if let showID = dictionary[Client.MyAPIResponseKeys.showID] {
-            self.showID = showID as! Int
-        } else {
-            self.showID = -1
-        }
-        
-        if let network = dictionary[Client.MyAPIResponseKeys.Network] {
-            self.network = network as? String
-        } else {
-            self.network = "Not Available"
-        }
-        
-        if let rating = dictionary[Client.MyAPIResponseKeys.Rating] {
-            self.rating = rating as? Double
-        } else {
-            self.rating = nil
-        }
-        
-        if let ratingCount = dictionary[Client.MyAPIResponseKeys.RatingCount] {
-            self.ratingCount = ratingCount as? Int
-        } else {
-            self.ratingCount = nil
-        }
-        
-        if let runtime = dictionary[Client.MyAPIResponseKeys.Runtime] {
-            self.runtime = runtime as? Int
-        } else {
-            self.runtime = nil
-        }
-        
-        if let timezone = dictionary[Client.MyAPIResponseKeys.Timezone] {
+        if let timezone = dictionary[Client.TraktParameters.Timezone] {
             self.timezone = timezone as? String
-        } else {
-            self.timezone = "America/New_York"
+        }
+        
+        if let runtime = dictionary[Client.TraktParameters.Runtime] {
+            self.runtime = runtime as! Int
+        }
+        
+        if let network = dictionary[Client.TraktParameters.Network] {
+            self.network = network as? String
+        }
+        
+        if let status = dictionary[Client.TraktParameters.Status] {
+            self.status = status as? String
+        }
+        
+        if let rating = dictionary[Client.TraktParameters.Rating] {
+            self.rating = rating as! Int
+        }
+        
+        if let genreList = dictionary[Client.TraktParameters.Genre] {
+            self.genreList = genreList as! List<Genres>
+        }
+        
+        if let airedEpisodeCount = dictionary[Client.TraktParameters.EpisodeCount] {
+            self.airedEpisodeCount = airedEpisodeCount as! Int
+        }
+        
+        if let poster = dictionary[Client.TraktParameters.Poster] {
+            self.poster = poster as? String
+        }
+        
+        if let banner = dictionary[Client.TraktParameters.Banner] {
+            self.banner = banner as? String
+        }
+        
+        if let fanart = dictionary[Client.TraktParameters.Fanart] {
+            self.fanart = fanart as? String
+        }
+        
+        if let thumb = dictionary[Client.TraktParameters.Thumb] {
+            self.thumb = thumb as? String
         }
         
     }

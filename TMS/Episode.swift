@@ -10,112 +10,53 @@ import RealmSwift
 
 class Episode: Object {
     
-    dynamic var episodeID: Int = -1
-    dynamic var episodeTitle: String?
-    dynamic var airDateTime: Date?
+    dynamic var number: Int = -1
+    dynamic var title: String?
+    dynamic var id: Int = -1
     dynamic var overview: String?
-    dynamic var banner: String?
-    var rating: Double?
-    var ratingCount: Double?
-    dynamic var writer: String?
-    dynamic var watched: Bool = false
-    dynamic var episodeNumber: Int = -1
-    dynamic var seasonNumber: Int = -1
-    dynamic var show: Show?
+    var rating: Double? = 0.0
+    var votes: Int? = 0
+    dynamic var firstAired: NSDate?
+    dynamic var image: String?
+    dynamic var season: Season!
     
     override static func primaryKey() -> String? {
-        return "episodeID"
+        return "id"
     }
     
     convenience init(dictionary: [String:AnyObject]) {
         self.init()
         
-        let timezone: String
-        if let timezoneString = dictionary[Client.MyAPIResponseKeys.Timezone] {
-            timezone = timezoneString as! String
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
-            dateFormatter.timeZone = TimeZone(identifier: timezone)
-            
-            if let airDateTime = dictionary[Client.MyAPIResponseKeys.AirDateTime] {
-                if let dateString = airDateTime as? String {
-                    if let airDetails = dateFormatter.date(from: dateString){
-                        self.airDateTime = airDetails
-                    } else {
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                        if let airDetails = dateFormatter.date(from: dateString){
-                            self.airDateTime = airDetails
-                        } else {
-                            dateFormatter.dateFormat = "yyyy-MM-dd ha"
-                            if let airDetails = dateFormatter.date(from: dateString) {
-                                self.airDateTime = airDetails
-                            } else {
-                                dateFormatter.dateFormat = "yyyy-MM-dd"
-                                if let airDetails = dateFormatter.date(from: dateString) {
-                                    self.airDateTime = airDetails
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        if let number = dictionary[Client.TraktParameters.Number] {
+            self.number = number as! Int
         }
         
-        if let episodeNumber = dictionary[Client.MyAPIResponseKeys.EpisodeNo] as? String {
-            self.episodeNumber = (episodeNumber as NSString).integerValue
-        } else {
-            self.episodeNumber = -1
+        if let title = dictionary[Client.TraktParameters.Title] {
+            self.title = title as? String
         }
         
-        if let episodeID = dictionary[Client.MyAPIResponseKeys.EpisodeID] {
-            self.episodeID = episodeID as! Int
-        } else {
-            self.episodeID = -1
+        if let id = dictionary[Client.TraktParameters.TraktID] {
+            self.id = id as! Int
         }
         
-        if let banner = dictionary[Client.MyAPIResponseKeys.Image] {
-            self.banner = banner as? String
-        } else {
-            self.banner = ""
-        }
-        
-        if let overview = dictionary[Client.MyAPIResponseKeys.Overview] {
+        if let overview = dictionary[Client.TraktParameters.Overview] {
             self.overview = overview as? String
-        } else {
-            self.overview = "Not Available"
         }
         
-        if let rating = dictionary[Client.MyAPIResponseKeys.Rating] {
+        if let rating = dictionary[Client.TraktParameters.Rating] {
             self.rating = rating as? Double
-        } else {
-            self.rating = 0
         }
         
-        if let ratingCount = dictionary[Client.MyAPIResponseKeys.RatingCount] {
-            self.ratingCount = ratingCount as? Double
-        } else {
-            self.ratingCount = 0.0
+        if let votes = dictionary[Client.TraktParameters.Votes] {
+            self.votes = votes as? Int
         }
         
-        if let episodeTitle = dictionary[Client.MyAPIResponseKeys.Title] {
-            self.episodeTitle = episodeTitle as? String
-        } else {
-            self.episodeTitle = "Not Available"
+        if let firstAired = dictionary[Client.TraktParameters.FirstAired] {
+            self.firstAired = firstAired as? NSDate
         }
         
-        if let writer = dictionary[Client.MyAPIResponseKeys.Writer] {
-            self.writer = writer as? String
-        } else {
-            self.writer = "Not Available"
-        }
-        
-        if let watched = dictionary[Client.MyAPIResponseKeys.Watched] {
-            self.watched = watched as! Bool
-        }
-        
-        if let seasonNumber = dictionary[Client.MyAPIResponseKeys.SeasonNo] {
-            self.seasonNumber = seasonNumber as! Int
+        if let image = dictionary[Client.TraktParameters.ScreenShot]{
+            self.image = image as? String
         }
         
     }

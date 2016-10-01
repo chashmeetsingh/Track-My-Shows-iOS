@@ -43,12 +43,12 @@ extension Client {
             Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
         ]
         
-         _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.tvdbID)/\(show.traktID)", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { ( result, error) in
+         _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.traktID)", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { ( result, error) in
             if error != nil {
                 completionHandlerForGETShowData(false, error)
             } else {
                 var result = result as! [String:AnyObject]
-                result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID as AnyObject?
+                //result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID as AnyObject?
                 result[Client.MyAPIResponseKeys.TraktID] = show.traktID as AnyObject?
                 result[Client.MyAPIResponseKeys.Thumb] = show.thumb as AnyObject?
                 let show = Show.getShowFromResult(result)

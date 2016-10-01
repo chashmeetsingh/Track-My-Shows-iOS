@@ -47,14 +47,14 @@ class AddShowViewController: UIViewController {
         }
         
         
-        yearLabel.text = "\(show.year!)"
+        yearLabel.text = "\(show.year)"
         statusLabel.text = show.status
         textView.text = show.overview
     }
     
     func checkIfShowAlreadySaved() {
         let realm = try! Realm()
-        checkShow = realm.objects(Show.self).filter("tvdbID = \(show.tvdbID)")
+        checkShow = realm.objects(Show.self).filter("tvdbID = \(show.traktID)")
 
         if checkShow.count == 0 {
             addButton.isEnabled = true
