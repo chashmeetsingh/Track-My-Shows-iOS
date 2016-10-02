@@ -142,12 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				6D31812E1D9940490088A7B6 /* Main.storyboard */,
-				6D2692AF1D99843C00FEF63D /* TrendingCell.swift */,
 				6D3181311D9940490088A7B6 /* Assets.xcassets */,
 				6D3181331D9940490088A7B6 /* LaunchScreen.storyboard */,
-				6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */,
-				6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */,
-				6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -210,6 +206,7 @@
 			children = (
 				6D5018CB1D9D29090031EB9A /* Utilities */,
 				6D26929F1D9949E000FEF63D /* Assets */,
+				6DBF261B1DA0F8400095D402 /* Custom Cells */,
 				6D2692A11D9949F400FEF63D /* Controllers */,
 				6D2692A01D9949EC00FEF63D /* Model */,
 			);
@@ -225,6 +222,17 @@
 				6D5018CC1D9D291E0031EB9A /* Time.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		6DBF261B1DA0F8400095D402 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6D2692AF1D99843C00FEF63D /* TrendingCell.swift */,
+				6DCDE5131D9C3830007FB96C /* ShowTabCell.swift */,
+				6D5018C61D9D25C70031EB9A /* EpisodeViewCell.swift */,
+				6DDAE7B21D9D996C00A692B5 /* SearchShowCell.swift */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		9F7C9904F603D85EB44D722F /* Pods */ = {

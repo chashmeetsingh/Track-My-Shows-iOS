@@ -13,7 +13,7 @@ class Genres: Object {
 }
 
 class Show: Object {
-    
+
     dynamic var title: String? = "Not Available"
     dynamic var year: Int = -1
     dynamic var id: Int = -1
@@ -33,133 +33,142 @@ class Show: Object {
     dynamic var banner: String? = ""
     dynamic var fanart: String? = ""
     dynamic var thumb: String? = ""
+    dynamic var watchers: Int = 0
     var seasons = List<Season>()
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
     convenience init(dictionary: [String:AnyObject]) {
         self.init()
-        
-        if let title = dictionary[Client.TraktParameters.Title] {
-            self.title = title as? String
+
+        if let watchers = dictionary[Client.TraktParameters.Watchers] {
+            self.watchers = watchers as! Int
         }
-        
-        if let year = dictionary[Client.TraktParameters.Year] {
-            self.year = year as! Int
+
+        if let showDictionary = dictionary[Client.TraktParameters.Show] {
+
+            if let title = showDictionary[Client.TraktParameters.Title] {
+                self.title = title as? String
+            }
+
+            if let year = showDictionary[Client.TraktParameters.Year] {
+                self.year = year as! Int
+            }
+
+            if let ids = showDictionary[Client.TraktParameters.IDS] as? [String:AnyObject] {
+                if let id = ids[Client.TraktParameters.TraktID] {
+                    self.id = id as! Int
+                }
+            }
+
+            if let overview = showDictionary[Client.TraktParameters.Overview] {
+                self.overview = overview as? String
+            }
+
+            if let firstAired = showDictionary[Client.TraktParameters.FirstAired] as? String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZ"
+                self.firstAired = dateFormatter.date(from: firstAired) as NSDate?
+            }
+
+            if let airs = showDictionary[Client.TraktParameters.Airs] as? [String:AnyObject] {
+
+                if let airDay = airs[Client.TraktParameters.Day] {
+                    self.airDay = airDay as? String
+                }
+
+                if let airTime = airs[Client.TraktParameters.Time] {
+                    self.airTime = airTime as? String
+                }
+
+                if let timezone = airs[Client.TraktParameters.Timezone] {
+                    self.timezone = timezone as? String
+                }
+
+            }
+
+            if let runtime = showDictionary[Client.TraktParameters.Runtime] {
+                self.runtime = runtime as! Int
+            }
+
+            if let network = showDictionary[Client.TraktParameters.Network] {
+                self.network = network as? String
+            }
+
+            if let trailer = showDictionary[Client.TraktParameters.Trailer] {
+                self.trailer = trailer as? String
+            }
+
+            if let status = showDictionary[Client.TraktParameters.Status] {
+                self.status = status as? String
+                self.status?.capitalizeFirstLetter()
+            }
+
+            if let rating = showDictionary[Client.TraktParameters.Rating] {
+                self.rating = rating as! Int
+            }
+
+            if let genreList = showDictionary[Client.TraktParameters.Genre] {
+                if let genreList = genreList as? NSArray {
+                    for genre in genreList {
+                        self.genreList.append(Genres(value: genre))
+                    }
+                }
+            }
+
+            if let airedEpisodeCount = showDictionary[Client.TraktParameters.AiredEpisodes] {
+                self.airedEpisodeCount = airedEpisodeCount as! Int
+            }
+
+            if let images = showDictionary[Client.TraktParameters.Images] as? [String:AnyObject] {
+
+                if let poster = images[Client.TraktParameters.Poster]?[Client.TraktParameters.Full] {
+                    self.poster = poster as? String
+                }
+
+                if let banner = images[Client.TraktParameters.Banner]?[Client.TraktParameters.Full] {
+                    self.banner = banner as? String
+                }
+
+                if let fanart = images[Client.TraktParameters.Fanart]?[Client.TraktParameters.Full] {
+                    self.fanart = fanart as? String
+                }
+
+                if let thumb = images[Client.TraktParameters.Thumb]?[Client.TraktParameters.Full] {
+                    self.thumb = thumb as? String
+                }
+
+            }
+
         }
-        
-        if let id = dictionary[Client.TraktParameters.TraktID] {
-            self.id = id as! Int
-        }
-        
-        if let overview = dictionary[Client.TraktParameters.Overview] {
-            self.overview = overview as? String
-        }
-        
-        if let firstAired = dictionary[Client.TraktParameters.FirstAired] {
-            self.firstAired = firstAired as? NSDate
-        }
-        
-        if let airDay = dictionary[Client.TraktParameters.Day] {
-            self.airDay = airDay as? String
-        }
-        
-        if let airTime = dictionary[Client.TraktParameters.Time] {
-            self.airTime = airTime as? String
-        }
-        
-        if let timezone = dictionary[Client.TraktParameters.Timezone] {
-            self.timezone = timezone as? String
-        }
-        
-        if let runtime = dictionary[Client.TraktParameters.Runtime] {
-            self.runtime = runtime as! Int
-        }
-        
-        if let network = dictionary[Client.TraktParameters.Network] {
-            self.network = network as? String
-        }
-        
-        if let status = dictionary[Client.TraktParameters.Status] {
-            self.status = status as? String
-        }
-        
-        if let rating = dictionary[Client.TraktParameters.Rating] {
-            self.rating = rating as! Int
-        }
-        
-        if let genreList = dictionary[Client.TraktParameters.Genre] {
-            self.genreList = genreList as! List<Genres>
-        }
-        
-        if let airedEpisodeCount = dictionary[Client.TraktParameters.EpisodeCount] {
-            self.airedEpisodeCount = airedEpisodeCount as! Int
-        }
-        
-        if let poster = dictionary[Client.TraktParameters.Poster] {
-            self.poster = poster as? String
-        }
-        
-        if let banner = dictionary[Client.TraktParameters.Banner] {
-            self.banner = banner as? String
-        }
-        
-        if let fanart = dictionary[Client.TraktParameters.Fanart] {
-            self.fanart = fanart as? String
-        }
-        
-        if let thumb = dictionary[Client.TraktParameters.Thumb] {
-            self.thumb = thumb as? String
-        }
-        
+
     }
-    
+
     static func showsFromResults(_ results: [[String:AnyObject]]) -> [Show] {
-        
+
         var shows = [Show]()
-        
+
         for result in results {
             shows.append(Show(dictionary: result))
         }
-        
-        return shows
-        
-    }
-    
-    static func getShowFromResult(_ result: [String:AnyObject]) -> Show {
-        
-        let show = Show(dictionary: result)
-        
-        show.episodes = getEpisodesFromResponse(show, seasons: result[Client.MyAPIResponseKeys.Seasons] as! NSArray)
 
-        return show
-        
+        return shows
+
     }
-    
-    static func getEpisodesFromResponse(_ show: Show, seasons: NSArray) -> List<Episode> {
-        
-        let episodes = List<Episode>()
-        
-        for season in seasons {
-            let season = season as! [String:AnyObject]
-            let result = season[Client.MyAPIResponseKeys.Episodes] as! NSArray
-            let seasonNumber = season[Client.MyAPIResponseKeys.SeasonNo] as! Int
-            
-            for episode in result {
-                var data = episode as! [String : AnyObject]
-                data[Client.MyAPIResponseKeys.SeasonNo] = seasonNumber as AnyObject?
-                data[Client.MyAPIResponseKeys.Timezone] = show.timezone! as AnyObject?
-                
-                let episode = Episode(dictionary: data)
-                episode.show = show
-                episodes.append(episode)
-            }
-        }
-        
-        return episodes
-        
+
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        let first = String(characters.prefix(1)).capitalized
+        let other = String(characters.dropFirst())
+        return first + other
     }
-    
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
