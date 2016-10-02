@@ -45,7 +45,7 @@ class UpcomingViewController: UIViewController {
         let today = NSDate()
         let later = today.addingTimeInterval(60 * 60 * 24 * 30)
 
-        upcoming = allEpisodes.filter("firstAired BETWEEN {%@, %@} AND number > 0", today, later)
+        upcoming = allEpisodes.filter("firstAired BETWEEN {%@, %@} AND season.number > 0", today, later)
             .sorted(byProperty: "firstAired", ascending: true)
 
         if upcoming.count == 0 {
@@ -77,7 +77,7 @@ extension UpcomingViewController: UICollectionViewDataSource {
 
         let seasonDetails = "S\(String(format: "%02d", item.season.number))E\(String(format: "%02d", item.number))"
 
-        cell.imageView.kf.setImage(with: URL(string: (item.season.show?.poster)!)!,
+        cell.imageView.kf.setImage(with: URL(string: (item.season.poster)!)!,
                                    placeholder: nil,
                                    options: nil,
                                    progressBlock: { (receivedSize, totalSize) -> () in

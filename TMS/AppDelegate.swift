@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         initialiseRealm()
@@ -27,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             tabBarController.selectedIndex = 1
         }
+
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
 
         return true
     }
@@ -57,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 8,
+            schemaVersion: 9,
 
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above

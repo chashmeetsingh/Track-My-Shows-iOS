@@ -44,7 +44,7 @@ class AiredViewController: UIViewController {
         let today = NSDate()
         let earlier = today.addingTimeInterval(60 * 60 * 24 * 30 * -1)
 
-        aired = allEpisodes.filter("firstAired BETWEEN {%@, %@} AND number > 0", earlier, today)
+        aired = allEpisodes.filter("firstAired BETWEEN {%@, %@} AND season.number > 0", earlier, today)
             .sorted(byProperty: "firstAired", ascending: false)
 
         if aired.count == 0 {
@@ -75,7 +75,7 @@ extension AiredViewController: UICollectionViewDataSource {
         let episodeDate = timeSince(from: item.firstAired!, numericDates: true)
         let seasonDetails = "S\(String(format: "%02d", item.season.number))E\(String(format: "%02d", item.number))"
 
-        cell.imageView.kf.setImage(with: URL(string: (item.season.show?.poster)!)!,
+        cell.imageView.kf.setImage(with: URL(string: (item.season.poster)!)!,
                                    placeholder: nil,
                                    options: nil,
                                      progressBlock: { (receivedSize, totalSize) -> () in

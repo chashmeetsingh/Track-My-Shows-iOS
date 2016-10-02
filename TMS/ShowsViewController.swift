@@ -13,10 +13,10 @@ import RealmSwift
 class ShowsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var shows: Results<Show>!
-
     @IBOutlet weak var defaultLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    
+    var shows: Results<Show>!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,10 +8,6 @@
 
 import RealmSwift
 
-class Genres: Object {
-    dynamic var genre: String?
-}
-
 class Show: Object {
 
     dynamic var title: String? = "Not Available"
@@ -24,10 +20,9 @@ class Show: Object {
     dynamic var timezone: String? = "America/New_York"
     dynamic var runtime: Int = 0
     dynamic var network: String? = "Not Available"
-    dynamic var trailer: String?
+    dynamic var trailer: String? = ""
     dynamic var status: String? = "Not Available"
-    dynamic var rating: Int = 0
-    var genreList = List<Genres>()
+    dynamic var rating: Double = 0.0
     dynamic var airedEpisodeCount: Int = 0
     dynamic var poster: String? = ""
     dynamic var banner: String? = ""
@@ -43,102 +38,102 @@ class Show: Object {
     convenience init(dictionary: [String:AnyObject]) {
         self.init()
 
-        if let watchers = dictionary[Client.TraktParameters.Watchers] {
-            self.watchers = watchers as! Int
+        if let watchers = dictionary[Client.TraktParameters.Watchers] as? Int {
+            self.watchers = watchers
         }
 
         if let showDictionary = dictionary[Client.TraktParameters.Show] {
 
-            if let title = showDictionary[Client.TraktParameters.Title] {
-                self.title = title as? String
+            if let title = showDictionary[Client.TraktParameters.Title] as? String {
+                self.title = title
             }
 
-            if let year = showDictionary[Client.TraktParameters.Year] {
-                self.year = year as! Int
+            if let year = showDictionary[Client.TraktParameters.Year] as? Int {
+                self.year = year
             }
 
             if let ids = showDictionary[Client.TraktParameters.IDS] as? [String:AnyObject] {
-                if let id = ids[Client.TraktParameters.TraktID] {
-                    self.id = id as! Int
+                if let id = ids[Client.TraktParameters.TraktID] as? Int {
+                    self.id = id
                 }
             }
 
-            if let overview = showDictionary[Client.TraktParameters.Overview] {
-                self.overview = overview as? String
+            if let overview = showDictionary[Client.TraktParameters.Overview] as? String {
+                self.overview = overview
             }
 
             if let firstAired = showDictionary[Client.TraktParameters.FirstAired] as? String {
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.ZZZZ"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z"
                 self.firstAired = dateFormatter.date(from: firstAired) as NSDate?
             }
 
             if let airs = showDictionary[Client.TraktParameters.Airs] as? [String:AnyObject] {
 
-                if let airDay = airs[Client.TraktParameters.Day] {
-                    self.airDay = airDay as? String
+                if let airDay = airs[Client.TraktParameters.Day] as? String {
+                    self.airDay = airDay
                 }
 
-                if let airTime = airs[Client.TraktParameters.Time] {
-                    self.airTime = airTime as? String
+                if let airTime = airs[Client.TraktParameters.Time] as? String {
+                    self.airTime = airTime
                 }
 
-                if let timezone = airs[Client.TraktParameters.Timezone] {
-                    self.timezone = timezone as? String
+                if let timezone = airs[Client.TraktParameters.Timezone] as? String {
+                    self.timezone = timezone
                 }
 
             }
 
-            if let runtime = showDictionary[Client.TraktParameters.Runtime] {
-                self.runtime = runtime as! Int
+            if let runtime = showDictionary[Client.TraktParameters.Runtime] as? Int {
+                self.runtime = runtime
             }
 
-            if let network = showDictionary[Client.TraktParameters.Network] {
-                self.network = network as? String
+            if let network = showDictionary[Client.TraktParameters.Network] as? String {
+                self.network = network
             }
 
-            if let trailer = showDictionary[Client.TraktParameters.Trailer] {
-                self.trailer = trailer as? String
+            if let trailer = showDictionary[Client.TraktParameters.Trailer] as? String {
+                self.trailer = trailer
             }
 
-            if let status = showDictionary[Client.TraktParameters.Status] {
-                self.status = status as? String
+            if let status = showDictionary[Client.TraktParameters.Status] as? String {
+                self.status = status
                 self.status?.capitalizeFirstLetter()
             }
 
-            if let rating = showDictionary[Client.TraktParameters.Rating] {
-                self.rating = rating as! Int
+            if let rating = showDictionary[Client.TraktParameters.Rating] as? Double {
+                self.rating = rating
             }
 
             if let genreList = showDictionary[Client.TraktParameters.Genre] {
                 if let genreList = genreList as? NSArray {
-                    for genre in genreList {
-                        self.genreList.append(Genres(value: genre))
+                    for _ in genreList {
+                        //self.genreList.append(Genres(value: genre))
                     }
                 }
             }
 
-            if let airedEpisodeCount = showDictionary[Client.TraktParameters.AiredEpisodes] {
-                self.airedEpisodeCount = airedEpisodeCount as! Int
+            if let airedEpisodeCount = showDictionary[Client.TraktParameters.AiredEpisodes] as? Int {
+                self.airedEpisodeCount = airedEpisodeCount
             }
 
             if let images = showDictionary[Client.TraktParameters.Images] as? [String:AnyObject] {
 
-                if let poster = images[Client.TraktParameters.Poster]?[Client.TraktParameters.Full] {
-                    self.poster = poster as? String
+                if let poster = images[Client.TraktParameters.Poster]?[Client.TraktParameters.Full] as? String {
+                    self.poster = poster
                 }
 
-                if let banner = images[Client.TraktParameters.Banner]?[Client.TraktParameters.Full] {
-                    self.banner = banner as? String
+                if let banner = images[Client.TraktParameters.Banner]?[Client.TraktParameters.Full] as? String {
+                    self.banner = banner
                 }
 
-                if let fanart = images[Client.TraktParameters.Fanart]?[Client.TraktParameters.Full] {
-                    self.fanart = fanart as? String
+                if let fanart = images[Client.TraktParameters.Fanart]?[Client.TraktParameters.Full] as? String {
+                    self.fanart = fanart
                 }
 
-                if let thumb = images[Client.TraktParameters.Thumb]?[Client.TraktParameters.Full] {
-                    self.thumb = thumb as? String
+                if let thumb = images[Client.TraktParameters.Thumb]?[Client.TraktParameters.Full] as? String {
+                    self.thumb = thumb
                 }
 
             }
