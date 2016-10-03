@@ -83,27 +83,27 @@ extension SearchViewController: UISearchBarDelegate {
         collectionView.reloadData()
     }
 
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//        activityIndicator.startAnimating()
-//        noShowLabel.isHidden = true
-//        _ = Client.sharedInstance.getShowsByName(searchBar.text!, completionHandlerForGETShowByName: { (data, success, error) in
-//            performUIUpdatesOnMain({
-//                if success {
-//                    self.shows = data!
-//                    self.collectionView.reloadData()
-//                } else {
-//                    Toast(text: error?.localizedDescription).show()
-//                }
-//                self.activityIndicator.stopAnimating()
-//                if data?.count == 0 {
-//                    self.noShowLabel.isHidden = false
-//                } else {
-//                    self.noShowLabel.isHidden = true
-//                }
-//            })
-//        })
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        activityIndicator.startAnimating()
+        noShowLabel.isHidden = true
+        _ = Client.sharedInstance.getShowsByName(searchBar.text!, completionHandlerForGETShowByName: { (data, success, error) in
+            performUIUpdatesOnMain({
+                if success {
+                    self.shows = data!
+                    self.collectionView.reloadData()
+                } else {
+                    Toast(text: error?.localizedDescription).show()
+                }
+                self.activityIndicator.stopAnimating()
+                if data?.count == 0 {
+                    self.noShowLabel.isHidden = false
+                } else {
+                    self.noShowLabel.isHidden = true
+                }
+            })
+        })
+    }
 
 }
 

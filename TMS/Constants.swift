@@ -18,6 +18,7 @@ extension Client {
     struct TraktMethodKeys {
         static let Extended = "extended"
         static let Limit = "limit"
+        static let Query = "query"
     }
 
     struct TraktMethodValues {
