@@ -14,9 +14,9 @@ func timeSince(from: NSDate, numericDates: Bool = false) -> String {
     let earliest = now.earlierDate(from as Date)
     let latest = earliest == now as Date ? from : now
     let components = calendar.dateComponents([.year, .weekOfYear, .month, .day, .hour, .minute, .second], from: earliest, to: latest as Date)
-    
+
     var result = ""
-    
+
     if components.year! >= 2 {
         result = "\(components.year!) years ago"
     } else if components.year! >= 1 {
@@ -70,7 +70,7 @@ func timeSince(from: NSDate, numericDates: Bool = false) -> String {
     } else {
         result = "Just now"
     }
-    
+
     return result
 }
 
@@ -80,9 +80,9 @@ func timeAhead(to: NSDate, numericDates: Bool = false) -> String {
     let later = now.laterDate(to as Date)
     let latest = later == now as Date ? to : now
     let components = calendar.dateComponents([.year, .weekOfYear, .month, .day, .hour, .minute, .second], from: latest as Date, to: later as Date)
-    
+
     var result = ""
-    
+
     if components.year! >= 2 {
         result = "In \(components.year!) years"
     } else if components.year! >= 1 {
@@ -136,6 +136,6 @@ func timeAhead(to: NSDate, numericDates: Bool = false) -> String {
     } else {
         result = "Just now"
     }
-    
+
     return result
 }

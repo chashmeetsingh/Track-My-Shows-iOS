@@ -14,20 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         initialiseRealm()
-        
+
         let tabBarController = self.window?.rootViewController as! UITabBarController
-        
+
         let index: Int? = UserDefaults.standard.integer(forKey: "index")
         if let index = index {
             tabBarController.selectedIndex = index
         } else {
             tabBarController.selectedIndex = 1
         }
-        
+
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
+
         return true
     }
 
@@ -57,26 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 6,
-            
+            schemaVersion: 9,
+
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 6) {
+                if (oldSchemaVersion < 0) {
                     // Nothing to do!
                     // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically
                 }
         })
-        
+
         // Use the default directory, but replace the filename with the username
         config.fileURL = config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("tms.realm")
-        
+
         // Set this as the configuration used for the default Realm
         Realm.Configuration.defaultConfiguration = config
     }
 
 }
-

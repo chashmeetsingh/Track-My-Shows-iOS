@@ -9,7 +9,7 @@
 import UIKit
 
 class EpisodeViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var episodeTitle: UILabel!
     @IBOutlet weak var timeAgo: UILabel!

@@ -11,91 +11,93 @@ import UIKit
 import RealmSwift
 
 extension Client {
-    
-    func getTrendingShows(_ completionHandlerForGetTrendingShows: @escaping (_ data: [Show]?,_ success: Bool, _ error: NSError?) -> Void) {
-        
+
+    func getTrendingShows(_ completionHandlerForGetTrendingShows: @escaping (_ data: [Show]?, _ success: Bool, _ error: NSError?) -> Void) {
+
         let methodParameters = [
-            Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
+            Client.TraktMethodKeys.Extended: Client.TraktMethodValues.FullImages,
+            Client.TraktMethodKeys.Limit: Client.TraktMethodValues.Limit
         ]
-        
-        _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/trending", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { (result, error) in
-            
+
+        _ = taskForGETMethod(method: "/shows/trending", parameters: methodParameters as [String : AnyObject], completionHandlerForGET: { (result, error) in
+
             if error != nil {
-                
+
                 completionHandlerForGetTrendingShows(nil, false, error)
             } else {
-                guard let response = result?[Client.MyAPIResponseKeys.Response] else {
+                guard let response = result else {
                     completionHandlerForGetTrendingShows(nil, false, NSError(domain: "ParseError", code: 500, userInfo: [NSLocalizedDescriptionKey: "Could not parse trendingShows"]))
                     return
                 }
-                
+
                 let shows = Show.showsFromResults(response as! [[String : AnyObject]])
+
                 completionHandlerForGetTrendingShows(shows, true, nil)
             }
-            
+
         })
-        
+
     }
-    
-    func getShowData(_ show: Show, completionHandlerForGETShowData: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
-        
+
+    func getSeasons(_ show: Show, completionHandlerForGETShowData: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+
         let methodParameters = [
-            Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
+            Client.TraktMethodKeys.Extended: Client.TraktMethodValues.FullEpisodes
         ]
-        
-         _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/id/\(show.tvdbID)/\(show.traktID)", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { ( result, error) in
+
+         _ = taskForGETMethod(method: "/shows/\(show.id)/seasons", parameters: methodParameters as [String : AnyObject], completionHandlerForGET: { ( result, error) in
             if error != nil {
                 completionHandlerForGETShowData(false, error)
             } else {
-                var result = result as! [String:AnyObject]
-                result[Client.MyAPIResponseKeys.TvdbID] = show.tvdbID as AnyObject?
-                result[Client.MyAPIResponseKeys.TraktID] = show.traktID as AnyObject?
-                result[Client.MyAPIResponseKeys.Thumb] = show.thumb as AnyObject?
-                let show = Show.getShowFromResult(result)
-                
+
+                show.seasons = Season.getSeasonFromResult(show, results: result as! [[String : AnyObject]])
+
                 performDatabaseOperations({
                     let realm = try! Realm()
-                    
+
                     do {
                         try realm.write() {
                             realm.add(show, update: true)
                         }
                         completionHandlerForGETShowData(true, nil)
                     } catch let error {
-                        completionHandlerForGETShowData(false , NSError(domain: "Error: \(error)", code: -1, userInfo: [:]))
+                        completionHandlerForGETShowData(false, NSError(domain: "\(error.localizedDescription)", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not save show"]))
                     }
                 })
-                
-                
+
+                completionHandlerForGETShowData(true, nil)
+
             }
         })
-        
+
     }
-    
+
     func getShowsByName(_ showName: String, completionHandlerForGETShowByName: @escaping (_ shows: [Show]?, _ success: Bool, _ error: NSError?) -> Void) {
-        
-        let methodParameters = [
-            Client.TVDBParamterKeys.API_KEY: Client.TVDBParameterValues.APIKEY
-        ]
-        
+
         let queryString = showName.replacingOccurrences(of: " ", with: "+", options: NSString.CompareOptions.literal, range: nil)
         
-        _ = taskForPOSTMethod(Client.MyAPI.BaseUrl, method: "/show/name/\(queryString)", parameters: methodParameters as [String : AnyObject], completionHandlerForPOST: { ( result, error) in
+        let methodParameters = [
+            Client.TraktMethodKeys.Extended: Client.TraktMethodValues.FullEpisodes,
+            Client.TraktMethodKeys.Query: queryString
+        ]
+
+
+        _ = taskForGETMethod(method: "/search/show", parameters: methodParameters as [String : AnyObject], completionHandlerForGET: { ( result, error) in
             if error != nil {
                 completionHandlerForGETShowByName(nil, false, error)
             } else {
-                guard let response = result?[Client.MyAPIResponseKeys.Results] else {
+                guard let response = result else {
                     completionHandlerForGETShowByName(nil, false, NSError(domain: "ParseError", code: 500, userInfo: [NSLocalizedDescriptionKey: "Could not parse show search by name"]))
                     return
                 }
-                
+
                 let shows = Show.showsFromResults(response as! [[String : AnyObject]])
-                
+
                 completionHandlerForGETShowByName(shows, true, nil)
-                
+
             }
         })
-        
+
     }
-    
+
 }
