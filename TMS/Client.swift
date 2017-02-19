@@ -19,17 +19,21 @@ class Client: NSObject {
     }
 
     // MARK: GET Methods
-    func taskForGETMethod(method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(useTmdb: Bool = false, method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
 
         /* 1. Set the parameters */
         var parameters = parameters
 
         /* 2/3. Build the URL, Configure the request */
-        var request = URLRequest(url: myAPIURLFromParameters(parameters: parameters, withPathExtension: method))
-        request.addValue(Client.TraktHeaderValues.APIKey, forHTTPHeaderField: Client.TraktHeadersParamters.APIKey)
-        request.addValue(Client.TraktHeaderValues.API_VERSION, forHTTPHeaderField: Client.TraktHeadersParamters.API_VERSION)
-        request.addValue(Client.TraktHeaderValues.ContentType, forHTTPHeaderField: Client.TraktHeadersParamters.ContentType)
-
+        var request: URLRequest!
+        if (!useTmdb) {
+            request = URLRequest(url: myAPIURLFromParameters(parameters: parameters, withPathExtension: method))
+            request.addValue(Client.TraktHeaderValues.APIKey, forHTTPHeaderField: Client.TraktHeadersParamters.APIKey)
+            request.addValue(Client.TraktHeaderValues.API_VERSION, forHTTPHeaderField: Client.TraktHeadersParamters.API_VERSION)
+            request.addValue(Client.TraktHeaderValues.ContentType, forHTTPHeaderField: Client.TraktHeadersParamters.ContentType)
+        } else {
+            request = URLRequest(url: tmdbURLFromParameters(parameters: parameters, withPathExtension: method))
+        }
         /* 4. Make the request */
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
 
@@ -118,6 +122,22 @@ class Client: NSObject {
             components.queryItems!.append(queryItem)
         }
 
+        return components.url!
+    }
+    
+    func tmdbURLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = Client.Tmdb.APIScheme
+        components.host = Client.Tmdb.BaseURL
+        components.path = withPathExtension ?? ""
+        components.queryItems = [URLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
         return components.url!
     }
 

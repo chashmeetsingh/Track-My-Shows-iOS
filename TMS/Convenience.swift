@@ -12,31 +12,31 @@ import RealmSwift
 
 extension Client {
 
-    func getTrendingShows(_ completionHandlerForGetTrendingShows: @escaping (_ data: [Show]?, _ success: Bool, _ error: NSError?) -> Void) {
+    func getTrendingShows(_ completionHandlerForGetTrendingShows: @escaping (_ data: [TMDBShow]?, _ success: Bool, _ error: NSError?) -> Void) {
 
         let methodParameters = [
-            Client.TraktMethodKeys.Extended: Client.TraktMethodValues.FullImages,
-            Client.TraktMethodKeys.Limit: Client.TraktMethodValues.Limit
+//            Client.TraktMethodKeys.Extended: Client.TraktMethodValues.FullImages,
+//            Client.TraktMethodKeys.Limit: Client.TraktMethodValues.Limit
+            TmdbMethodKeys.APIKey : Tmdb.APIKey
         ]
 
-        _ = taskForGETMethod(method: "/shows/trending", parameters: methodParameters as [String : AnyObject], completionHandlerForGET: { (result, error) in
+        _ = taskForGETMethod(useTmdb: true, method: TmdbMethods.PopularTV, parameters: methodParameters as [String : AnyObject], completionHandlerForGET: { (result, error) in
 
             if error != nil {
-
                 completionHandlerForGetTrendingShows(nil, false, error)
             } else {
                 guard let response = result else {
                     completionHandlerForGetTrendingShows(nil, false, NSError(domain: "ParseError", code: 500, userInfo: [NSLocalizedDescriptionKey: "Could not parse trendingShows"]))
                     return
                 }
-
-                let shows = Show.showsFromResults(response as! [[String : AnyObject]])
+                var shows: [TMDBShow]? = nil
+                if let results = response[TmdbParameters.Results] {
+                    shows = TMDBShow.showsFromResults(results as! [[String : AnyObject]])
+                }
 
                 completionHandlerForGetTrendingShows(shows, true, nil)
             }
-
         })
-
     }
 
     func getSeasons(_ show: Show, completionHandlerForGETShowData: @escaping (_ success: Bool, _ error: NSError?) -> Void) {

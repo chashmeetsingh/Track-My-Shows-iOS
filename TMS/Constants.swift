@@ -9,7 +9,44 @@
 import Foundation
 
 extension Client {
+    
+    struct Tmdb {
+        static let APIScheme = "https"
+        static let BaseURL = "api.themoviedb.org"
+        static let ImageBaseURL = "image.tmdb.org"
+        static let APIKey = "0c631554bf34ccea9560eb13cb2ede96"
+    }
 
+    struct TmdbParameters{
+        static let PosterPath = "poster_path"
+        static let Popularity = "popularity"
+        static let ID = "id"
+        static let BackdropPath = "backdrop_path"
+        static let VoteAverage = "vote_average"
+        static let Overview = "overview"
+        static let FirstAirDate = "first_air_date"
+        static let OriginCountry = "origin_country"
+        static let GenreIDs = "genre_ids"
+        static let OriginalLanguage = "original_language"
+        static let VoteCount = "vote_count"
+        static let Name = "name"
+        static let OriginalName = "original_name"
+        static let TotalResults = "total_results"
+        static let TotalPages = "total_pages"
+        static let Results = "results"
+    }
+    
+    struct TmdbMethods{
+        static let PopularTV = "/3/tv/popular"
+        static let PosterImage = "/t/p/w342"
+    }
+    
+    struct TmdbMethodKeys {
+        static let APIKey = "api_key"
+        static let Language = "language"
+        static let Page = "page"
+    }
+    
     struct Trakt {
         static let APIScheme = "https"
         static let BaseURL = "api.trakt.tv"

@@ -15,7 +15,7 @@ class TrendingViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refresh: UIButton!
-    var shows = [Show]()
+    var shows = [TMDBShow]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class TrendingViewController: UIViewController {
         getTrendingShows()
         collectionView.dataSource = self
         collectionView.delegate = self
+        self.navigationController?.navigationBar.tintColor = .white
         refresh.isHidden = true
     }
 
@@ -50,7 +51,7 @@ class TrendingViewController: UIViewController {
 
 extension TrendingViewController: UICollectionViewDataSource {
 
-    func items() -> [Show] {
+    func items() -> [TMDBShow] {
         return shows
     }
 
@@ -66,7 +67,7 @@ extension TrendingViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TrendingCell
         let item = items()[(indexPath as NSIndexPath).row]
 
-        cell.imageView.kf.setImage(with: URL(string: item.fanart!)!,
+        cell.imageView.kf.setImage(with: URL(string: item.backdropPath!)!,
                                    placeholder: nil,
                                    options: nil,
             progressBlock: { (receivedSize, totalSize) -> () in
@@ -78,8 +79,8 @@ extension TrendingViewController: UICollectionViewDataSource {
             }
         )
 
-        cell.titleLabel.text = item.title
-        cell.watchLabel.text = " \(item.watchers) people watching "
+        cell.titleLabel.text = item.name
+        cell.watchLabel.text = "\(item.voteAverage)"
         cell.watchLabel.sizeToFit()
 
         return cell
@@ -106,7 +107,7 @@ extension TrendingViewController: UICollectionViewDelegate {
 
             let vc = segue.destination as! AddShowViewController
             let index = collectionView.indexPath(for: sender as! TrendingCell)
-            vc.show = items()[((index as NSIndexPath?)?.row)!]
+//            vc.show = items()[((index sa as NSIndexPath?)?.row)!]
 
         }
     }

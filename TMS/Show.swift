@@ -141,6 +141,10 @@ class Show: Object {
         }
 
     }
+    
+//    override func setValue(_ value: Any?, forKey key: String) {
+//        
+//    }
 
     static func showsFromResults(_ results: [[String:AnyObject]]) -> [Show] {
 
@@ -154,16 +158,4 @@ class Show: Object {
 
     }
 
-}
-
-extension String {
-    func capitalizingFirstLetter() -> String {
-        let first = String(characters.prefix(1)).capitalized
-        let other = String(characters.dropFirst())
-        return first + other
-    }
-
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
 }
