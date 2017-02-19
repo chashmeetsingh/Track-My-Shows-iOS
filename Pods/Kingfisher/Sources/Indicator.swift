@@ -4,7 +4,7 @@
 //
 //  Created by João D. Moreira on 30/08/16.
 //
-//  Copyright (c) 2016 Wei Wang <onevcat@gmail.com>
+//  Copyright (c) 2017 Wei Wang <onevcat@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -149,21 +149,21 @@ struct ImageIndicator: Indicator {
         if !options.preloadAllGIFData {
             options.append(.preloadAllGIFData)
         }
-
+        
         guard let image = processor.process(item: .data(data), options: options) else {
             return nil
         }
 
         animatedImageIndicatorView = ImageView()
         animatedImageIndicatorView.image = image
-
+        
         #if os(macOS)
             // Need for gif to animate on macOS
             self.animatedImageIndicatorView.imageScaling = .scaleNone
             self.animatedImageIndicatorView.canDrawSubviewsIntoLayer = true
         #else
             animatedImageIndicatorView.contentMode = .center
-
+            
             animatedImageIndicatorView.autoresizingMask = [.flexibleLeftMargin,
                                                            .flexibleRightMargin,
                                                            .flexibleBottomMargin,

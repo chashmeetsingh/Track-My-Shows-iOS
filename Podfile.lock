@@ -1,11 +1,11 @@
 PODS:
-  - Kingfisher (3.1.1)
-  - Realm (2.0.1):
-    - Realm/Headers (= 2.0.1)
-  - Realm/Headers (2.0.1)
-  - RealmSwift (2.0.1):
-    - Realm (= 2.0.1)
-  - Toaster (2.0.0)
+  - Kingfisher (3.4.0)
+  - Realm (2.4.2):
+    - Realm/Headers (= 2.4.2)
+  - Realm/Headers (2.4.2)
+  - RealmSwift (2.4.2):
+    - Realm (= 2.4.2)
+  - Toaster (2.0.3)
 
 DEPENDENCIES:
   - Kingfisher
@@ -13,11 +13,11 @@ DEPENDENCIES:
   - Toaster
 
 SPEC CHECKSUMS:
-  Kingfisher: 12b755ae697cc9f0fd3e550db8417fa1233e09ab
-  Realm: 0557ee0e4ab4f0936c90e370056d1ed6265f93d6
-  RealmSwift: 64e00af79bdcd7d2a7a23fdc1cb3faf22b80ae4c
-  Toaster: 25101e968655aa991fa72ad888029e8d515c6237
+  Kingfisher: 5690cfb3d1bddf3a98d679a3a34d0b7294974ed2
+  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
+  RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
+  Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
 
 PODFILE CHECKSUM: de630e835b73ecad3fe2b5fe950ada011efe4b3c
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

@@ -57,8 +57,8 @@ enum Instruction {
     instr_InsertEmptyRows = 13,
     instr_EraseRows = 14, // Remove (multiple) rows
     instr_SwapRows = 15,
-    instr_ChangeLinkTargets = 16, // Replace links pointing to row A with links to row B
-    instr_ClearTable = 17,        // Remove all rows in selected table
+    instr_MergeRows = 16,  // Replace links pointing to row A with links to row B
+    instr_ClearTable = 17, // Remove all rows in selected table
     instr_OptimizeTable = 18,
     instr_SelectDescriptor = 19, // Select descriptor from currently selected root table
     instr_InsertColumn =
@@ -167,7 +167,7 @@ public:
     {
         return true;
     }
-    bool change_link_targets(size_t, size_t)
+    bool merge_rows(size_t, size_t)
     {
         return true;
     }
@@ -339,7 +339,7 @@ public:
     bool insert_empty_rows(size_t row_ndx, size_t num_rows_to_insert, size_t prior_num_rows, bool unordered);
     bool erase_rows(size_t row_ndx, size_t num_rows_to_erase, size_t prior_num_rows, bool unordered);
     bool swap_rows(size_t row_ndx_1, size_t row_ndx_2);
-    bool change_link_targets(size_t row_ndx, size_t new_row_ndx);
+    bool merge_rows(size_t row_ndx, size_t new_row_ndx);
     bool clear_table();
 
     bool set_int(size_t col_ndx, size_t row_ndx, int_fast64_t, Instruction = instr_Set, size_t = 0);
@@ -413,8 +413,8 @@ private:
     // These two delimit a contiguous region of free space in a
     // transaction log buffer following the last written data. It may
     // be empty.
-    char* m_transact_log_free_begin = 0;
-    char* m_transact_log_free_end = 0;
+    char* m_transact_log_free_begin = nullptr;
+    char* m_transact_log_free_end = nullptr;
 
     char* reserve(size_t size);
     /// \param ptr Must be in the range [m_transact_log_free_begin, m_transact_log_free_end]
@@ -482,7 +482,7 @@ public:
                     bool is_move_last_over);
 
     void swap_rows(const Table*, size_t row_ndx_1, size_t row_ndx_2);
-    void change_link_targets(const Table*, size_t row_ndx, size_t new_row_ndx);
+    void merge_rows(const Table*, size_t row_ndx, size_t new_row_ndx);
     void add_search_index(const Table*, size_t col_ndx);
     void remove_search_index(const Table*, size_t col_ndx);
     void set_link_type(const Table*, size_t col_ndx, LinkType);
@@ -647,7 +647,7 @@ inline void TransactLogBufferStream::transact_log_append(const char* data, size_
                                                          char** out_new_end)
 {
     transact_log_reserve(size, out_new_begin, out_new_end);
-    *out_new_begin = std::copy(data, data + size, *out_new_begin);
+    *out_new_begin = std::copy_n(data, size, *out_new_begin);
 }
 
 inline const char* TransactLogBufferStream::transact_log_data() const
@@ -781,7 +781,7 @@ inline char* TransactLogEncoder::encode_float(char* ptr, float value)
                       sizeof(float) * std::numeric_limits<unsigned char>::digits == 32,
                   "Unsupported 'float' representation");
     const char* val_ptr = reinterpret_cast<char*>(&value);
-    return std::copy(val_ptr, val_ptr + sizeof value, ptr);
+    return std::copy_n(val_ptr, sizeof value, ptr);
 }
 
 inline char* TransactLogEncoder::encode_double(char* ptr, double value)
@@ -790,7 +790,7 @@ inline char* TransactLogEncoder::encode_double(char* ptr, double value)
                       sizeof(double) * std::numeric_limits<unsigned char>::digits == 64,
                   "Unsupported 'double' representation");
     const char* val_ptr = reinterpret_cast<char*>(&value);
-    return std::copy(val_ptr, val_ptr + sizeof value, ptr);
+    return std::copy_n(val_ptr, sizeof value, ptr);
 }
 
 template <class T>
@@ -859,7 +859,7 @@ void TransactLogEncoder::append_string_instr(Instruction instr, const util::Tupl
     char* ptr = reserve(max_required_bytes); // Throws
     *ptr++ = char(instr);
     util::for_each<EncodeNumber>(append(numbers, string.size()), &ptr);
-    ptr = std::copy(string.data(), string.data() + string.size(), ptr);
+    ptr = std::copy_n(string.data(), string.size(), ptr);
     advance(ptr);
 }
 
@@ -1442,16 +1442,16 @@ inline void TransactLogConvenientEncoder::swap_rows(const Table* t, size_t row_n
     m_encoder.swap_rows(row_ndx_1, row_ndx_2);
 }
 
-inline bool TransactLogEncoder::change_link_targets(size_t row_ndx, size_t new_row_ndx)
+inline bool TransactLogEncoder::merge_rows(size_t row_ndx, size_t new_row_ndx)
 {
-    append_simple_instr(instr_ChangeLinkTargets, util::tuple(row_ndx, new_row_ndx)); // Throws
+    append_simple_instr(instr_MergeRows, util::tuple(row_ndx, new_row_ndx)); // Throws
     return true;
 }
 
-inline void TransactLogConvenientEncoder::change_link_targets(const Table* t, size_t row_ndx, size_t new_row_ndx)
+inline void TransactLogConvenientEncoder::merge_rows(const Table* t, size_t row_ndx, size_t new_row_ndx)
 {
     select_table(t); // Throws
-    m_encoder.change_link_targets(row_ndx, new_row_ndx);
+    m_encoder.merge_rows(row_ndx, new_row_ndx);
 }
 
 inline bool TransactLogEncoder::add_search_index(size_t col_ndx)
@@ -1872,10 +1872,10 @@ void TransactLogParser::parse_one(InstructionHandler& handler)
                 parser_error();
             return;
         }
-        case instr_ChangeLinkTargets: {
-            size_t row_ndx = read_int<size_t>();                    // Throws
-            size_t new_row_ndx = read_int<size_t>();                // Throws
-            if (!handler.change_link_targets(row_ndx, new_row_ndx)) // Throws
+        case instr_MergeRows: {
+            size_t row_ndx = read_int<size_t>();           // Throws
+            size_t new_row_ndx = read_int<size_t>();       // Throws
+            if (!handler.merge_rows(row_ndx, new_row_ndx)) // Throws
                 parser_error();
             return;
         }
@@ -2153,15 +2153,14 @@ inline void TransactLogParser::read_bytes(char* data, size_t size)
         const size_t avail = m_input_end - m_input_begin;
         if (size <= avail)
             break;
-        const char* to = m_input_begin + avail;
-        std::copy(m_input_begin, to, data);
+        std::copy_n(m_input_begin, avail, data);
         if (!next_input_buffer())
             throw BadTransactLog();
         data += avail;
         size -= avail;
     }
     const char* to = m_input_begin + size;
-    std::copy(m_input_begin, to, data);
+    std::copy_n(m_input_begin, size, data);
     m_input_begin = to;
 }
 
@@ -2423,7 +2422,7 @@ public:
         return true;
     }
 
-    bool change_link_targets(size_t row_ndx, size_t new_row_ndx)
+    bool merge_rows(size_t row_ndx, size_t new_row_ndx)
     {
         static_cast<void>(row_ndx);
         static_cast<void>(new_row_ndx);
