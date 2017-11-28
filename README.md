@@ -1,5 +1,4 @@
 # Track-My-Shows-iOS
-Udacity iOS Nanodegree Final Project
 
 ##Building
 > Swift 3, XCode 8.0+
